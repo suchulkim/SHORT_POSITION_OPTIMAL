@@ -395,7 +395,7 @@
         <!-- 헤더 -->
         <div class="header">
             <h1>🧠 AI 암호화폐 분석 결과</h1>
-            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-21 18:05:02</div>
+            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-21 18:32:55</div>
         </div>
 
         <!-- 네비게이션 -->
@@ -439,27 +439,27 @@
         
         <div class="analysis-summary">
             <h2 class="section-title">📈 최고 점수 종목 상세 분석</h2>
-            <h3 style="color: var(--accent-color); margin-bottom: 1.5rem;">KOMAUSDT</h3>
+            <h3 style="color: var(--accent-color); margin-bottom: 1.5rem;">BANUSDT</h3>
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-value">KOMAUSDT</div>
+                    <div class="stat-value">BANUSDT</div>
                     <div class="stat-label">종목명</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">35</div>
+                    <div class="stat-value">33</div>
                     <div class="stat-label">최종 점수</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">41.0%</div>
+                    <div class="stat-value">39.0%</div>
                     <div class="stat-label">신뢰도</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">41.4%</div>
+                    <div class="stat-value">51.4%</div>
                     <div class="stat-label">GO 확률</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$0.024360</div>
+                    <div class="stat-value">$0.071780</div>
                     <div class="stat-label">현재가</div>
                 </div>
                 <div class="stat-card">
@@ -471,7 +471,7 @@
             
         <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px; border: 1px solid var(--border-color);">
             <h4 style="color: var(--primary-color); margin-bottom: 1rem;">🔍 AI 판단 근거</h4>
-            <p style='margin-bottom: 0.5rem;'>🟡 <strong>RSI:</strong> RSI 63.2로 중립 구간</p><p style='margin-bottom: 0.5rem;'>🟡 <strong>ATR:</strong> ATR: 0.050</p><p style='margin-bottom: 0.5rem;'>🟡 <strong>윌리엄스_R:</strong> 윌리엄스_R: 0.716</p>
+            <p style='margin-bottom: 0.5rem;'>🟡 <strong>RSI:</strong> RSI 47.6로 중립 구간</p><p style='margin-bottom: 0.5rem;'>🟡 <strong>윌리엄스_R:</strong> 윌리엄스_R: 0.611</p><p style='margin-bottom: 0.5rem;'>🟡 <strong>ATR:</strong> ATR: 0.060</p>
             <p style="margin-top: 1rem;"><strong>핵심 인사이트:</strong> </p>
         </div>
         
@@ -482,25 +482,21 @@
         
         <div class="chart-section" id="chartSection">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
-                <h2 class="section-title">📈 KOMAUSDT 실시간 차트</h2>
+                <h2 class="section-title">📈 BANUSDT 실시간 차트</h2>
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <button onclick="setTimeframe('1m')" id="btn1m" class="chart-btn"
+                    <button onclick="changeInterval('15')" id="btn15m" class="chart-btn"
                             style="padding: 0.5rem 1rem; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        1분
+                        15분
                     </button>
-                    <button onclick="setTimeframe('5m')" id="btn5m" class="chart-btn"
+                    <button onclick="changeInterval('60')" id="btn1h" class="chart-btn"
                             style="padding: 0.5rem 1rem; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        5분
-                    </button>
-                    <button onclick="setTimeframe('1h')" id="btn1h" class="chart-btn active"
-                            style="padding: 0.5rem 1rem; background: #2962FF; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
                         1시간
                     </button>
-                    <button onclick="setTimeframe('4h')" id="btn4h" class="chart-btn"
-                            style="padding: 0.5rem 1rem; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
+                    <button onclick="changeInterval('240')" id="btn4h" class="chart-btn active"
+                            style="padding: 0.5rem 1rem; background: #2962FF; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
                         4시간
                     </button>
-                    <button onclick="setTimeframe('1d')" id="btn1d" class="chart-btn"
+                    <button onclick="changeInterval('1D')" id="btn1d" class="chart-btn"
                             style="padding: 0.5rem 1rem; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
                         일봉
                     </button>
@@ -519,16 +515,15 @@
                 </div>
             </div>
             
-            <!-- API 상태 표시 -->
-            <div id="apiStatus" style="background: #1a1a1a; padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <!-- 현재가 표시 -->
+            <div id="priceDisplay" style="background: #1a1a1a; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
                 <div style="color: white;">
-                    <span style="color: #f0b90b; font-weight: bold; font-size: 1.2rem;">KOMAUSDT</span>
+                    <span style="color: #f0b90b; font-weight: bold; font-size: 1.2rem;">BANUSDT</span>
                     <span id="currentPrice" style="margin-left: 1rem; font-size: 1.5rem; font-weight: bold; color: #00ff88;">로딩중...</span>
                     <span id="priceChange" style="margin-left: 1rem; font-size: 1rem;">0.00%</span>
-                    <span id="dataSource" style="margin-left: 1rem; font-size: 0.8rem; color: #ccc;">데이터 소스: 확인중...</span>
                 </div>
                 <div style="color: #ccc; font-size: 0.9rem;">
-                    마지막 업데이트: <span id="lastUpdate">-</span>
+                    실시간 TradingView 데이터
                 </div>
             </div>
             
@@ -537,609 +532,273 @@
                 <span id="statusText">차트를 로딩중입니다...</span>
             </div>
             
-            <!-- 캔들스틱 차트 (Canvas) -->
-            <div class="chart-container" id="candlestickContainer" style="height: 1200px !important; width: 100% !important; display: block; background: #1a1a1a; border-radius: 10px; padding: 1rem; position: relative;">
-                <canvas id="candlestickChart" style="width: 100%; height: calc(100% - 2rem); border-radius: 5px; background: #000;"></canvas>
-                
-                <!-- 차트 정보 오버레이 -->
-                <div id="chartInfo" style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.8); color: white; padding: 0.5rem; border-radius: 5px; font-size: 0.9rem; display: none;">
-                    <div id="hoverPrice">가격: -</div>
-                    <div id="hoverTime">시간: -</div>
-                    <div id="hoverOHLC">시가: - / 고가: - / 저가: - / 종가: -</div>
-                    <div id="hoverVolume">거래량: -</div>
-                </div>
+            <!-- TradingView 차트 -->
+            <div class="chart-container" id="tradingViewContainer" style="height: 1200px !important; width: 100% !important; display: block;">
+                <div id="tradingview_chart" style="height: 1200px !important; width: 100% !important; min-height: 1200px !important;"></div>
             </div>
             
             <!-- 가격 정보 대시보드 -->
             <div class="chart-container" id="priceInfoContainer" style="height: 1200px !important; width: 100% !important; display: none; background: #1a1a1a; border-radius: 10px; padding: 2rem;">
                 <div style="color: white; text-align: center;">
-                    <h2 style="color: #f0b90b; margin-bottom: 2rem;">KOMAUSDT 상세 정보</h2>
+                    <h2 style="color: #f0b90b; margin-bottom: 2rem;">BANUSDT 상세 정보</h2>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
                         <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
                             <h3 style="color: #00ff88;">현재가</h3>
-                            <div id="detailCurrentPrice" style="font-size: 2.5rem; font-weight: bold;">로딩중...</div>
+                            <div id="detailCurrentPrice" style="font-size: 2.5rem; font-weight: bold;">TradingView에서 확인</div>
                         </div>
                         <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
                             <h3 style="color: #ff4444;">24시간 변동</h3>
-                            <div id="detailPriceChange" style="font-size: 2rem; font-weight: bold;">로딩중...</div>
+                            <div id="detailPriceChange" style="font-size: 2rem; font-weight: bold;">TradingView에서 확인</div>
                         </div>
                         <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
                             <h3 style="color: #ffaa00;">24시간 거래량</h3>
-                            <div id="volume24h" style="font-size: 1.5rem; font-weight: bold;">로딩중...</div>
+                            <div id="volume24h" style="font-size: 1.5rem; font-weight: bold;">TradingView에서 확인</div>
                         </div>
                         <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
                             <h3 style="color: #00aaff;">24시간 최고가</h3>
-                            <div id="high24h" style="font-size: 1.5rem; font-weight: bold;">로딩중...</div>
+                            <div id="high24h" style="font-size: 1.5rem; font-weight: bold;">TradingView에서 확인</div>
                         </div>
                         <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
                             <h3 style="color: #ff6b6b;">24시간 최저가</h3>
-                            <div id="low24h" style="font-size: 1.5rem; font-weight: bold;">로딩중...</div>
+                            <div id="low24h" style="font-size: 1.5rem; font-weight: bold;">TradingView에서 확인</div>
                         </div>
                         <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
-                            <h3 style="color: #a78bfa;">거래 횟수</h3>
-                            <div id="tradeCount" style="font-size: 1.5rem; font-weight: bold;">로딩중...</div>
+                            <h3 style="color: #a78bfa;">분석 도구</h3>
+                            <div style="font-size: 1.5rem; font-weight: bold;">TradingView 차트 참조</div>
                         </div>
                     </div>
                     
                     <!-- 차트 링크들 -->
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                        <a href="https://www.binance.com/en/trade/KOMA_USDT" target="_blank" 
+                        <a href="https://www.binance.com/en/trade/BAN_USDT" target="_blank" 
                         style="background: #f0b90b; color: #000; padding: 1.5rem; border-radius: 10px; text-decoration: none; font-weight: bold; display: block;">
                             🚀 바이낸스에서 거래하기
                         </a>
-                        <a href="https://www.coingecko.com/en/coins/koma" target="_blank"
+                        <a href="https://www.coingecko.com/en/coins/ban" target="_blank"
                         style="background: #8dc647; color: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; font-weight: bold; display: block;">
                             🦎 CoinGecko에서 보기
                         </a>
-                        <a href="https://coinmarketcap.com/currencies/koma/" target="_blank"
-                        style="background: #17a2b8; color: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; font-weight: bold; display: block;">
-                            📊 CoinMarketCap
+                        <a href="https://www.tradingview.com/chart/?symbol=BINANCE:BANUSDT" target="_blank"
+                        style="background: #2962FF; color: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; font-weight: bold; display: block;">
+                            📈 TradingView 전체화면
                         </a>
-                        <button onclick="showCandlestickChart()" 
+                        <button onclick="showTradingViewChart()" 
                                 style="background: #6f42c1; color: white; padding: 1.5rem; border-radius: 10px; border: none; font-weight: bold; cursor: pointer;">
-                            📈 차트로 돌아가기
+                            📊 차트로 돌아가기
                         </button>
                     </div>
                     
                     <div style="margin-top: 2rem; padding: 1rem; background: #333; border-radius: 10px;">
-                        <p style="color: #ccc;">💡 <strong>팁:</strong> 실제 바이낸스 API 연결을 위해 여러 방법을 시도합니다. CORS 프록시, WebSocket 등을 활용합니다.</p>
+                        <p style="color: #ccc;">💡 <strong>팁:</strong> TradingView 차트에서 직접 모든 기술적 분석 도구를 사용할 수 있습니다.</p>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- TradingView 스크립트 로드 -->
+        <script src="https://s3.tradingview.com/tv.js"></script>
+        
         <script>
-            let canvas;
-            let ctx;
-            let chartData = [];
-            let currentTimeframe = '1h';
-            let currentSymbol = 'KOMAUSDT';
+            let widget = null;
             let isChartExpanded = false;
+            let currentInterval = '240'; // 기본 4시간
             let priceUpdateInterval = null;
-            let wsConnection = null;
-            let mouseX = 0;
-            let mouseY = 0;
-            let isMouseOver = false;
-            let currentDataSource = 'unknown';
             
-            // 차트 설정
-            const chartConfig = {
-                padding: 60,
-                gridColor: '#333',
-                upColor: '#00ff88',
-                downColor: '#ff4444',
-                textColor: '#ffffff',
-                fontSize: 12,
-                candleWidth: 8,
-                candleSpacing: 2
-            };
-            
-            // 여러 CORS 프록시 및 API 엔드포인트
-            const apiEndpoints = [
-                // 1. CORS 프록시들
-                'https://cors-anywhere.herokuapp.com/https://api.binance.com/api/v3',
-                'https://corsproxy.io/?https://api.binance.com/api/v3',
-                'https://api.allorigins.win/raw?url=https://api.binance.com/api/v3',
-                'https://proxy.cors.sh/https://api.binance.com/api/v3',
-                // 2. 직접 바이낸스 API (CORS 제한이 풀린 경우)
-                'https://api.binance.com/api/v3',
-                // 3. 바이낸스 대안 엔드포인트들
-                'https://api1.binance.com/api/v3',
-                'https://api2.binance.com/api/v3',
-                'https://api3.binance.com/api/v3'
-            ];
-            
-            // 초기화
-            function initChart() {
-                canvas = document.getElementById('candlestickChart');
-                ctx = canvas.getContext('2d');
+            // TradingView 위젯 초기화
+            function initTradingViewWidget() {
+                showStatus('TradingView 위젯을 초기화하는 중...');
                 
-                // 캔버스 크기 설정
-                resizeCanvas();
-                
-                // 마우스 이벤트 리스너
-                canvas.addEventListener('mousemove', onMouseMove);
-                canvas.addEventListener('mouseenter', () => isMouseOver = true);
-                canvas.addEventListener('mouseleave', () => {
-                    isMouseOver = false;
-                    document.getElementById('chartInfo').style.display = 'none';
-                });
-                
-                // 윈도우 리사이즈 이벤트
-                window.addEventListener('resize', resizeCanvas);
-            }
-            
-            function resizeCanvas() {
-                const container = canvas.parentElement;
-                const rect = container.getBoundingClientRect();
-                
-                canvas.width = rect.width - 32;
-                canvas.height = rect.height - 32;
-                
-                // 고해상도 디스플레이 지원
-                const dpr = window.devicePixelRatio || 1;
-                canvas.width *= dpr;
-                canvas.height *= dpr;
-                canvas.style.width = (rect.width - 32) + 'px';
-                canvas.style.height = (rect.height - 32) + 'px';
-                ctx.scale(dpr, dpr);
-                
-                // 차트 다시 그리기
-                if (chartData.length > 0) {
-                    drawChart();
-                }
-            }
-            
-            function onMouseMove(event) {
-                const rect = canvas.getBoundingClientRect();
-                mouseX = event.clientX - rect.left;
-                mouseY = event.clientY - rect.top;
-                
-                if (isMouseOver && chartData.length > 0) {
-                    showChartInfo(mouseX, mouseY);
-                }
-            }
-            
-            function showChartInfo(x, y) {
-                const canvasWidth = canvas.clientWidth;
-                const chartArea = canvasWidth - 2 * chartConfig.padding;
-                const dataIndex = Math.floor((x - chartConfig.padding) / (chartArea / chartData.length));
-                
-                if (dataIndex >= 0 && dataIndex < chartData.length) {
-                    const data = chartData[dataIndex];
-                    const infoDiv = document.getElementById('chartInfo');
-                    
-                    document.getElementById('hoverPrice').textContent = `현재가: ${data.c.toFixed(6)}`;
-                    document.getElementById('hoverTime').textContent = `시간: ${new Date(data.t).toLocaleString('ko-KR')}`;
-                    document.getElementById('hoverOHLC').textContent = 
-                        `시가: ${data.o.toFixed(6)} / 고가: ${data.h.toFixed(6)} / 저가: ${data.l.toFixed(6)} / 종가: ${data.c.toFixed(6)}`;
-                    document.getElementById('hoverVolume').textContent = `거래량: ${data.v ? data.v.toFixed(2) : 'N/A'}`;
-                    
-                    infoDiv.style.display = 'block';
-                    infoDiv.style.left = Math.min(x + 10, canvasWidth - 250) + 'px';
-                    infoDiv.style.top = (y - 80) + 'px';
-                }
-            }
-            
-            // 차트 그리기
-            function drawChart() {
-                if (!ctx || chartData.length === 0) return;
-                
-                const width = canvas.clientWidth;
-                const height = canvas.clientHeight;
-                
-                // 캔버스 클리어
-                ctx.fillStyle = '#000000';
-                ctx.fillRect(0, 0, width, height);
-                
-                // 가격 범위 계산
-                const prices = chartData.flatMap(d => [d.h, d.l]);
-                const minPrice = Math.min(...prices);
-                const maxPrice = Math.max(...prices);
-                const priceRange = maxPrice - minPrice;
-                const padding = priceRange * 0.1;
-                
-                const chartMinPrice = minPrice - padding;
-                const chartMaxPrice = maxPrice + padding;
-                const chartPriceRange = chartMaxPrice - chartMinPrice;
-                
-                // 차트 영역 계산
-                const chartArea = {
-                    left: chartConfig.padding,
-                    top: chartConfig.padding,
-                    width: width - 2 * chartConfig.padding,
-                    height: height - 2 * chartConfig.padding
-                };
-                
-                // 그리드 그리기
-                drawGrid(chartArea, chartMinPrice, chartMaxPrice);
-                
-                // 캔들스틱 그리기
-                drawCandlesticks(chartArea, chartMinPrice, chartPriceRange);
-                
-                // 축 레이블 그리기
-                drawAxisLabels(chartArea, chartMinPrice, chartMaxPrice);
-            }
-            
-            function drawGrid(area, minPrice, maxPrice) {
-                ctx.strokeStyle = chartConfig.gridColor;
-                ctx.lineWidth = 1;
-                
-                // 수평 그리드 (가격)
-                const priceSteps = 8;
-                for (let i = 0; i <= priceSteps; i++) {
-                    const y = area.top + (area.height / priceSteps) * i;
-                    ctx.beginPath();
-                    ctx.moveTo(area.left, y);
-                    ctx.lineTo(area.left + area.width, y);
-                    ctx.stroke();
-                }
-                
-                // 수직 그리드 (시간)
-                const timeSteps = Math.min(10, chartData.length);
-                for (let i = 0; i <= timeSteps; i++) {
-                    const x = area.left + (area.width / timeSteps) * i;
-                    ctx.beginPath();
-                    ctx.moveTo(x, area.top);
-                    ctx.lineTo(x, area.top + area.height);
-                    ctx.stroke();
-                }
-            }
-            
-            function drawCandlesticks(area, minPrice, priceRange) {
-                const candleWidth = Math.max(2, area.width / chartData.length - chartConfig.candleSpacing);
-                
-                chartData.forEach((data, index) => {
-                    const x = area.left + (area.width / chartData.length) * index + (area.width / chartData.length - candleWidth) / 2;
-                    
-                    // 가격을 y 좌표로 변환
-                    const openY = area.top + area.height - ((data.o - minPrice) / priceRange) * area.height;
-                    const closeY = area.top + area.height - ((data.c - minPrice) / priceRange) * area.height;
-                    const highY = area.top + area.height - ((data.h - minPrice) / priceRange) * area.height;
-                    const lowY = area.top + area.height - ((data.l - minPrice) / priceRange) * area.height;
-                    
-                    const isUpCandle = data.c >= data.o;
-                    const color = isUpCandle ? chartConfig.upColor : chartConfig.downColor;
-                    
-                    ctx.strokeStyle = color;
-                    ctx.fillStyle = isUpCandle ? 'transparent' : color;
-                    ctx.lineWidth = 1;
-                    
-                    // 위꼬리
-                    ctx.beginPath();
-                    ctx.moveTo(x + candleWidth / 2, highY);
-                    ctx.lineTo(x + candleWidth / 2, Math.min(openY, closeY));
-                    ctx.stroke();
-                    
-                    // 아래꼬리
-                    ctx.beginPath();
-                    ctx.moveTo(x + candleWidth / 2, Math.max(openY, closeY));
-                    ctx.lineTo(x + candleWidth / 2, lowY);
-                    ctx.stroke();
-                    
-                    // 몸통
-                    const bodyTop = Math.min(openY, closeY);
-                    const bodyHeight = Math.abs(closeY - openY);
-                    
-                    if (isUpCandle) {
-                        ctx.strokeRect(x, bodyTop, candleWidth, bodyHeight);
-                    } else {
-                        ctx.fillRect(x, bodyTop, candleWidth, bodyHeight);
+                try {
+                    // 기존 위젯이 있으면 제거
+                    if (widget) {
+                        widget.remove();
+                        widget = null;
                     }
-                });
-            }
-            
-            function drawAxisLabels(area, minPrice, maxPrice) {
-                ctx.fillStyle = chartConfig.textColor;
-                ctx.font = `${chartConfig.fontSize}px Arial`;
-                ctx.textAlign = 'right';
-                
-                // 가격 레이블 (우측)
-                const priceSteps = 8;
-                const priceStep = (maxPrice - minPrice) / priceSteps;
-                
-                for (let i = 0; i <= priceSteps; i++) {
-                    const price = minPrice + priceStep * i;
-                    const y = area.top + area.height - (area.height / priceSteps) * i;
-                    ctx.fillText(price.toFixed(6), area.left + area.width + 50, y + 4);
-                }
-                
-                // 시간 레이블 (하단)
-                ctx.textAlign = 'center';
-                const timeSteps = Math.min(6, chartData.length);
-                for (let i = 0; i <= timeSteps; i++) {
-                    const dataIndex = Math.floor((chartData.length - 1) / timeSteps * i);
-                    if (dataIndex < chartData.length) {
-                        const time = new Date(chartData[dataIndex].t);
-                        const timeStr = currentTimeframe.includes('d') ? 
-                            time.toLocaleDateString('ko-KR', {month: 'short', day: 'numeric'}) :
-                            time.toLocaleTimeString('ko-KR', {hour: '2-digit', minute: '2-digit'});
-                        
-                        const x = area.left + (area.width / timeSteps) * i;
-                        ctx.fillText(timeStr, x, area.top + area.height + 20);
+                    
+                    // 컨테이너 확인 및 초기화
+                    const container = document.getElementById('tradingview_chart');
+                    if (!container) {
+                        console.error('TradingView 컨테이너를 찾을 수 없습니다.');
+                        showStatus('차트 컨테이너 오류가 발생했습니다.');
+                        return;
                     }
+                    
+                    // 컨테이너 비우기
+                    container.innerHTML = '';
+                    
+                    // TradingView 위젯 생성
+                    widget = new TradingView.widget({
+                        "width": "100%",
+                        "height": "100%",
+                        "symbol": "BINANCE:BANUSDT",
+                        "interval": currentInterval,
+                        "timezone": "Asia/Seoul",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "kr",
+                        "toolbar_bg": "#1a1a1a",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "container_id": "tradingview_chart",
+                        "studies": [
+                            "RSI@tv-basicstudies",
+                            "MASimple@tv-basicstudies",
+                            "Volume@tv-basicstudies"
+                        ],
+                        "loading_screen": {
+                            "backgroundColor": "#1a1a1a",
+                            "foregroundColor": "#ffffff"
+                        },
+                        "overrides": {
+                            "paneProperties.background": "#1a1a1a",
+                            "paneProperties.backgroundType": "solid",
+                            "paneProperties.vertGridProperties.color": "#2a2a2a",
+                            "paneProperties.horzGridProperties.color": "#2a2a2a",
+                            "symbolWatermarkProperties.transparency": 95,
+                            "scalesProperties.textColor": "#ffffff",
+                            "scalesProperties.backgroundColor": "#1a1a1a",
+                            "mainSeriesProperties.candleStyle.upColor": "#00ff88",
+                            "mainSeriesProperties.candleStyle.downColor": "#ff4444",
+                            "mainSeriesProperties.candleStyle.borderUpColor": "#00ff88",
+                            "mainSeriesProperties.candleStyle.borderDownColor": "#ff4444",
+                            "mainSeriesProperties.candleStyle.wickUpColor": "#00ff88",
+                            "mainSeriesProperties.candleStyle.wickDownColor": "#ff4444"
+                        },
+                        "onChartReady": function() {
+                            console.log('TradingView 차트 로딩 완료');
+                            hideStatus();
+                            loadCurrentPrice();
+                        }
+                    });
+                    
+                    console.log('TradingView 위젯 생성 완료');
+                    
+                } catch (error) {
+                    console.error('TradingView 위젯 생성 실패:', error);
+                    showStatus('TradingView 로딩에 실패했습니다. 페이지를 새로고침해보세요.');
                 }
             }
             
-            // 시간프레임 설정
-            function setTimeframe(timeframe) {
-                currentTimeframe = timeframe;
+            // 시간 간격 변경
+            function changeInterval(interval) {
+                currentInterval = interval;
                 
                 // 버튼 스타일 업데이트
                 document.querySelectorAll('.chart-btn').forEach(btn => {
-                    btn.classList.remove('active');
                     btn.style.background = '#666';
                 });
                 
-                const activeBtn = document.getElementById('btn' + timeframe);
+                // 활성 버튼 스타일 적용
+                const intervalBtns = {
+                    '15': 'btn15m',
+                    '60': 'btn1h', 
+                    '240': 'btn4h',
+                    '1D': 'btn1d'
+                };
+                
+                const activeBtn = document.getElementById(intervalBtns[interval]);
                 if (activeBtn) {
-                    activeBtn.classList.add('active');
                     activeBtn.style.background = '#2962FF';
                 }
                 
-                loadChartData();
+                // 위젯 다시 생성
+                initTradingViewWidget();
             }
             
-            // 실제 바이낸스 API에서 차트 데이터 로드
-            async function loadChartData() {
-                showStatus('바이낸스 API에서 실제 데이터를 로딩중입니다...');
-                
-                const limit = currentTimeframe === '1m' ? 100 : 
-                            currentTimeframe === '5m' ? 200 : 
-                            currentTimeframe === '1h' ? 168 : 
-                            currentTimeframe === '4h' ? 168 : 100;
-                
-                // 여러 API 엔드포인트 시도
-                for (let i = 0; i < apiEndpoints.length; i++) {
-                    const apiUrl = apiEndpoints[i];
-                    const fullUrl = `${apiUrl}/klines?symbol=${currentSymbol}&interval=${currentTimeframe}&limit=${limit}`;
-                    
-                    try {
-                        console.log(`시도중: ${apiUrl}`);
-                        showStatus(`API 시도 ${i + 1}/${apiEndpoints.length}: ${apiUrl.includes('cors') ? 'CORS 프록시' : '직접 연결'}`);
-                        
-                        // fetch 옵션 설정
-                        const fetchOptions = {
-                            method: 'GET',
-                            headers: {
-                                'Accept': 'application/json',
-                            }
-                        };
-                        
-                        // 일부 프록시는 특별한 헤더가 필요할 수 있음
-                        if (apiUrl.includes('allorigins')) {
-                            fetchOptions.headers['X-Requested-With'] = 'XMLHttpRequest';
-                        }
-                        
-                        const response = await fetch(fullUrl, fetchOptions);
-                        
-                        if (response.ok) {
-                            let data = await response.json();
-                            
-                            // allorigins의 경우 contents 필드에서 데이터 추출
-                            if (data.contents) {
-                                data = JSON.parse(data.contents);
-                            }
-                            
-                            if (Array.isArray(data) && data.length > 0) {
-                                chartData = data.map(candle => ({
-                                    t: candle[0], // timestamp
-                                    o: parseFloat(candle[1]), // open
-                                    h: parseFloat(candle[2]), // high
-                                    l: parseFloat(candle[3]), // low
-                                    c: parseFloat(candle[4]), // close
-                                    v: parseFloat(candle[5])  // volume
-                                }));
-                                
-                                currentDataSource = apiUrl.includes('cors') ? 'CORS 프록시' : 
-                                                apiUrl.includes('allorigins') ? 'AllOrigins 프록시' :
-                                                '바이낸스 직접';
-                                document.getElementById('dataSource').textContent = `데이터 소스: ${currentDataSource}`;
-                                
-                                drawChart();
-                                hideStatus();
-                                
-                                // 현재가 업데이트
-                                if (chartData.length > 0) {
-                                    const latestCandle = chartData[chartData.length - 1];
-                                    updateCurrentPrice(latestCandle.c);
-                                }
-                                
-                                console.log(`성공! ${data.length}개 캔들 데이터 로드됨`);
-                                return; // 성공하면 함수 종료
-                            }
-                        } else {
-                            console.log(`HTTP 에러: ${response.status} - ${response.statusText}`);
-                        }
-                    } catch (error) {
-                        console.log(`API 실패 (${apiUrl}):`, error.message);
-                    }
-                }
-                
-                // 모든 API 엔드포인트가 실패한 경우 WebSocket 시도
-                showStatus('REST API 모두 실패. WebSocket 연결을 시도합니다...');
-                await tryWebSocketConnection();
-            }
-            
-            // WebSocket 연결 시도
-            async function tryWebSocketConnection() {
+            // 현재가 로드 (간단한 시도)
+            async function loadCurrentPrice() {
                 try {
-                    // 기존 연결 종료
-                    if (wsConnection) {
-                        wsConnection.close();
+                    // Binance API 직접 시도 (CORS 문제로 실패할 수 있음)
+                    const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=BANUSDT`);
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        const price = parseFloat(data.price);
+                        
+                        document.getElementById('currentPrice').textContent = '$' + price.toFixed(6);
+                        document.getElementById('currentPrice').style.color = '#00ff88';
+                    } else {
+                        throw new Error('API 응답 오류');
                     }
-                    
-                    const streamName = `${currentSymbol.toLowerCase()}@kline_${currentTimeframe}`;
-                    const wsUrl = `wss://stream.binance.com:9443/ws/${streamName}`;
-                    
-                    wsConnection = new WebSocket(wsUrl);
-                    
-                    wsConnection.onopen = () => {
-                        console.log('WebSocket 연결 성공');
-                        currentDataSource = 'WebSocket (실시간)';
-                        document.getElementById('dataSource').textContent = `데이터 소스: ${currentDataSource}`;
-                        showStatus('WebSocket으로 실시간 데이터 수신 시작...');
-                    };
-                    
-                    wsConnection.onmessage = (event) => {
-                        const data = JSON.parse(event.data);
-                        if (data.k) {
-                            const kline = data.k;
-                            const newCandle = {
-                                t: kline.t,
-                                o: parseFloat(kline.o),
-                                h: parseFloat(kline.h),
-                                l: parseFloat(kline.l),
-                                c: parseFloat(kline.c),
-                                v: parseFloat(kline.v)
-                            };
-                            
-                            // 첫 번째 데이터인 경우 기본 차트 생성
-                            if (chartData.length === 0) {
-                                chartData = [newCandle];
-                            } else {
-                                // 마지막 캔들 업데이트 또는 새 캔들 추가
-                                if (kline.x) { // 캔들 완성
-                                    chartData.push(newCandle);
-                                    if (chartData.length > 100) {
-                                        chartData.shift(); // 오래된 데이터 제거
-                                    }
-                                } else { // 진행중인 캔들 업데이트
-                                    chartData[chartData.length - 1] = newCandle;
-                                }
-                            }
-                            
-                            drawChart();
-                            updateCurrentPrice(newCandle.c);
-                            hideStatus();
-                        }
-                    };
-                    
-                    wsConnection.onerror = (error) => {
-                        console.log('WebSocket 에러:', error);
-                        showStatus('WebSocket 연결 실패. 차트를 사용할 수 없습니다.');
-                    };
-                    
-                    wsConnection.onclose = () => {
-                        console.log('WebSocket 연결 종료');
-                    };
-                    
                 } catch (error) {
-                    console.error('WebSocket 연결 실패:', error);
-                    showStatus('모든 데이터 소스에 연결할 수 없습니다. 네트워크를 확인해주세요.');
+                    // CORS 오류 또는 기타 문제 시 TradingView 데이터 참조 메시지
+                    document.getElementById('currentPrice').textContent = 'TradingView 차트 참조';
+                    document.getElementById('currentPrice').style.color = '#ccc';
+                    document.getElementById('priceChange').textContent = 'TradingView 차트 참조';
+                    document.getElementById('priceChange').style.color = '#ccc';
                 }
-            }
-            
-            // 현재가 업데이트
-            function updateCurrentPrice(price) {
-                const priceElement = document.getElementById('currentPrice');
-                if (priceElement) {
-                    priceElement.textContent = '$' + price.toFixed(6);
-                    document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString('ko-KR');
-                }
-            }
-            
-            // 가격 정보 로드
-            async function loadPriceInfo() {
-                showStatus('24시간 가격 정보를 로딩중입니다...');
-                
-                // 24시간 가격 정보용 API 엔드포인트들
-                const tickerEndpoints = apiEndpoints.map(base => `${base}/ticker/24hr?symbol=${currentSymbol}`);
-                
-                for (const url of tickerEndpoints) {
-                    try {
-                        const response = await fetch(url);
-                        if (response.ok) {
-                            let data = await response.json();
-                            
-                            // allorigins의 경우 contents 필드에서 데이터 추출
-                            if (data.contents) {
-                                data = JSON.parse(data.contents);
-                            }
-                            
-                            if (data.lastPrice) {
-                                document.getElementById('detailCurrentPrice').textContent = '$' + parseFloat(data.lastPrice).toFixed(6);
-                                
-                                const change = parseFloat(data.priceChangePercent);
-                                const changeElement = document.getElementById('detailPriceChange');
-                                changeElement.textContent = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
-                                changeElement.style.color = change > 0 ? '#00ff88' : '#ff4444';
-                                
-                                // 헤더의 가격 변동도 업데이트
-                                const headerChangeElement = document.getElementById('priceChange');
-                                if (headerChangeElement) {
-                                    headerChangeElement.textContent = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
-                                    headerChangeElement.style.color = change > 0 ? '#00ff88' : '#ff4444';
-                                }
-                                
-                                document.getElementById('volume24h').textContent = (parseFloat(data.quoteVolume) / 1000000).toFixed(2) + 'M USDT';
-                                document.getElementById('high24h').textContent = '$' + parseFloat(data.highPrice).toFixed(6);
-                                document.getElementById('low24h').textContent = '$' + parseFloat(data.lowPrice).toFixed(6);
-                                document.getElementById('tradeCount').textContent = parseInt(data.count).toLocaleString();
-                                
-                                hideStatus();
-                                return; // 성공하면 종료
-                            }
-                        }
-                    } catch (error) {
-                        console.log('가격 정보 로딩 실패:', error);
-                    }
-                }
-                
-                showStatus('가격 정보를 로드할 수 없습니다.');
             }
             
             // 뷰 전환 함수들
-            function showCandlestickChart() {
-                document.getElementById('candlestickContainer').style.display = 'block';
+            function showTradingViewChart() {
+                document.getElementById('tradingViewContainer').style.display = 'block';
                 document.getElementById('priceInfoContainer').style.display = 'none';
                 
-                // 버튼 스타일 업데이트
-                document.querySelectorAll('.chart-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                    if (!btn.id.includes('btn')) {
-                        btn.style.background = '#666';
-                    }
-                });
-                
-                setTimeout(resizeCanvas, 100);
+                // 위젯 크기 재조정
+                if (widget) {
+                    setTimeout(() => {
+                        widget.resize(
+                            document.getElementById('tradingview_chart').clientWidth,
+                            document.getElementById('tradingview_chart').clientHeight
+                        );
+                    }, 100);
+                }
             }
             
             function showPriceInfo() {
-                document.getElementById('candlestickContainer').style.display = 'none';
+                document.getElementById('tradingViewContainer').style.display = 'none';
                 document.getElementById('priceInfoContainer').style.display = 'block';
                 
+                // 버튼 스타일 업데이트
                 document.getElementById('priceBtn').style.background = '#28a745';
-                loadPriceInfo();
             }
             
             function openBinanceChart() {
-                const url = 'https://www.binance.com/en/trade/KOMA_USDT';
+                const url = 'https://www.binance.com/en/trade/BAN_USDT';
                 window.open(url, '_blank', 'width=1400,height=900');
             }
             
             function toggleChartSize() {
                 const chartSection = document.getElementById('chartSection');
-                const containers = [document.getElementById('candlestickContainer'), document.getElementById('priceInfoContainer')];
+                const container = document.getElementById('tradingViewContainer');
                 const toggleBtn = document.getElementById('chartToggleBtn');
                 
                 if (!isChartExpanded) {
                     const newHeight = Math.max(800, window.innerHeight - 150);
                     chartSection.classList.add('chart-fullscreen');
-                    containers.forEach(container => {
-                        container.style.height = newHeight + 'px';
-                    });
+                    container.style.height = newHeight + 'px';
+                    
+                    // TradingView 차트도 크기 조정
+                    const chartDiv = document.getElementById('tradingview_chart');
+                    chartDiv.style.height = (newHeight - 40) + 'px';
+                    
                     toggleBtn.innerHTML = '🔍 축소';
                     isChartExpanded = true;
-                    setTimeout(resizeCanvas, 100);
+                    
+                    // 위젯 크기 재조정
+                    if (widget) {
+                        setTimeout(() => {
+                            widget.resize('100%', newHeight - 40);
+                        }, 100);
+                    }
                 } else {
                     chartSection.classList.remove('chart-fullscreen');
-                    containers.forEach(container => {
-                        container.style.height = '1200px';
-                    });
+                    container.style.height = '1200px';
+                    
+                    const chartDiv = document.getElementById('tradingview_chart');
+                    chartDiv.style.height = '1200px';
+                    
                     toggleBtn.innerHTML = '🔍 확대';
                     isChartExpanded = false;
-                    setTimeout(resizeCanvas, 100);
+                    
+                    // 위젯 크기 재조정
+                    if (widget) {
+                        setTimeout(() => {
+                            widget.resize('100%', 1200);
+                        }, 100);
+                    }
                 }
             }
             
@@ -1153,17 +812,39 @@
                 document.getElementById('chartStatus').style.display = 'none';
             }
             
-            // 초기화
+            // TradingView 스크립트 로드 확인 및 초기화
+            function initChart() {
+                if (typeof TradingView !== 'undefined') {
+                    console.log('TradingView 라이브러리 로드 완료');
+                    initTradingViewWidget();
+                } else {
+                    console.log('TradingView 라이브러리 로딩 대기 중...');
+                    setTimeout(initChart, 1000); // 1초 후 다시 시도
+                }
+            }
+            
+            // 페이지 로드 시 초기화
             document.addEventListener('DOMContentLoaded', function() {
-                console.log('차트 초기화 시작...');
-                initChart();
-                loadChartData();
+                console.log('페이지 로드 완료, TradingView 차트 초기화 시작...');
+                
+                // TradingView 스크립트가 로드될 때까지 대기
+                setTimeout(initChart, 1000);
+            });
+            
+            // 윈도우 리사이즈 이벤트 처리
+            window.addEventListener('resize', function() {
+                if (widget && document.getElementById('tradingViewContainer').style.display !== 'none') {
+                    setTimeout(() => {
+                        const container = document.getElementById('tradingview_chart');
+                        widget.resize(container.clientWidth, container.clientHeight);
+                    }, 100);
+                }
             });
             
             // 페이지 언로드시 정리
             window.addEventListener('beforeunload', function() {
-                if (wsConnection) {
-                    wsConnection.close();
+                if (widget) {
+                    widget.remove();
                 }
                 if (priceUpdateInterval) {
                     clearInterval(priceUpdateInterval);
@@ -1193,6 +874,16 @@
                     </thead>
                     <tbody>
                         
+                <tr>
+                    <td style="font-size: 0.9rem;">2025-09-21 18:32</td>
+                    <td><a href="https://www.binance.com/en/futures/BANUSDT" target="_blank" class="symbol-link">BANUSDT</a></td>
+                    <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">33</td>
+                    <td>39.0%</td>
+                    <td>51.4%</td>
+                    <td><span class="risk-badge risk-high">HIGH</span></td>
+                </tr>
+            
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 18:05</td>
                     <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
