@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 암호화폐 분석 결과</title>
+    <title>암호화폐 분석 결과</title>
     <script src="https://s3.tradingview.com/tv.js"></script>
     <style>
         :root {
@@ -117,31 +117,6 @@
             margin-bottom: 2rem;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
-        }
-
-        .decision-badge {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .decision-go {
-            background: linear-gradient(135deg, var(--success-color), #00a444);
-            color: white;
-        }
-
-        .decision-nogo {
-            background: linear-gradient(135deg, var(--danger-color), #d32f2f);
-            color: white;
-        }
-
-        .decision-wait {
-            background: linear-gradient(135deg, var(--warning-color), #f57c00);
-            color: white;
         }
 
         .stats-grid {
@@ -339,7 +314,7 @@
             border: 1px solid #f5c6cb;
         }
 
-        /* 개선된 AI 판단 근거 스타일 - 더 큰 글씨 */
+        /* 개선된 판단 근거 스타일 - 더 큰 글씨 */
         .reasoning-section {
             margin-top: 2rem;
             padding: 2rem;
@@ -431,7 +406,7 @@
         <!-- 헤더 -->
         <div class="header">
             <h1>🧠 AI 암호화폐 분석 결과</h1>
-            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-22 00:05:01</div>
+            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-22 00:09:50</div>
         </div>
 
         <!-- 개선된 네비게이션 -->
@@ -442,33 +417,6 @@
                 <a href="CandlePatternAnalysis.html" class="nav-link pattern">📈 코인선물 패턴 검출 현황</a>
             </div>
         </div>
-
-        <!-- AI 최종 판단 -->
-        
-        <div class="analysis-summary">
-            <h2 class="section-title">🎯 AI 최종 판단</h2>
-            <div class="decision-badge decision-nogo">
-                NOGO
-            </div>
-            
-            <p style="font-size: 1.1rem; margin-bottom: 1rem;"><strong>판단 근거:</strong> 시장 환경이 숏포지션에 불리함</p>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">35</div>
-                    <div class="stat-label">시장 점수</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">NEUTRAL</div>
-                    <div class="stat-label">시장 심리</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">❌</div>
-                    <div class="stat-label">숏 친화도</div>
-                </div>
-            </div>
-        </div>
-        
 
         <!-- 최고 점수 종목 분석 -->
         
@@ -490,11 +438,11 @@
                     <div class="stat-label">신뢰도</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">57.9%</div>
+                    <div class="stat-value">58.1%</div>
                     <div class="stat-label">GO 확률</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$0.041500</div>
+                    <div class="stat-value">$0.041540</div>
                     <div class="stat-label">현재가</div>
                 </div>
                 <div class="stat-card">
@@ -508,7 +456,7 @@
             <h4 class="reasoning-title">🔍 AI 판단 근거</h4>
             
                 <div class="reasoning-factor">
-                    🟡 <strong>스토캐스틱_K:</strong> 스토캐스틱_K: 0.643
+                    🟡 <strong>스토캐스틱_K:</strong> 스토캐스틱_K: 0.648
                 </div>
             
                 <div class="reasoning-factor">
@@ -516,7 +464,7 @@
                 </div>
             
                 <div class="reasoning-factor">
-                    🟡 <strong>RSI:</strong> RSI 68.4로 중립 구간
+                    🟡 <strong>RSI:</strong> RSI 68.5로 중립 구간
                 </div>
             
             <div class="reasoning-insight">
@@ -658,11 +606,11 @@
         </script>
         
 
-        <!-- AI 종목 분석 히스토리 -->
+        <!-- 종목 분석 히스토리 -->
         
         <div class="history-section">
-            <h2 class="section-title">📋 AI 종목 분석 히스토리</h2>
-            <p style="margin-bottom: 1.5rem; color: #666;">AI가 분석해서 최고 점수를 얻은 종목들의 리스트입니다. 종목명을 클릭하면 바이낸스 차트로 이동합니다.</p>
+            <h2 class="section-title">📋 종목 분석 히스토리</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">기술적 분석으로 최고 점수를 얻은 종목들의 리스트입니다. 종목명을 클릭하면 차트로 이동합니다.</p>
             
             <div style="overflow-x: auto;">
                 <table class="history-table">
@@ -673,12 +621,22 @@
                             <th>결정</th>
                             <th>점수</th>
                             <th>신뢰도</th>
-                            <th>GO확률</th>
+                            <th>하락확률</th>
                             <th>리스크</th>
                         </tr>
                     </thead>
                     <tbody>
                         
+                <tr>
+                    <td style="font-size: 0.9rem;">2025-09-22 00:09</td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:MUBARAKUSDT&interval=240" target="_blank" class="symbol-link">MUBARAKUSDT</a></td>
+                    <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">41</td>
+                    <td>47.0%</td>
+                    <td>58.1%</td>
+                    <td><span class="risk-badge risk-high">HIGH</span></td>
+                </tr>
+            
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-22 00:05</td>
                     <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:MUBARAKUSDT&interval=240" target="_blank" class="symbol-link">MUBARAKUSDT</a></td>
@@ -1169,16 +1127,6 @@
                     <td><span class="risk-badge risk-high">HIGH</span></td>
                 </tr>
             
-                <tr>
-                    <td style="font-size: 0.9rem;">2025-09-20 15:30</td>
-                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
-                    <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">43</td>
-                    <td>49.0%</td>
-                    <td>55.6%</td>
-                    <td><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
                     </tbody>
                 </table>
             </div>
@@ -1195,7 +1143,7 @@
                 🔴 <strong>과거 데이터가 미래 수익을 보장하지 않습니다</strong><br>
                 🔴 <strong>암호화폐는 극도로 변동성이 큰 자산입니다</strong><br>
                 🔴 <strong>손실 감당 가능한 매우 소액으로만 시작하세요</strong><br>
-                🔴 <strong>전문가 상담 없이 AI 결과만으로 투자하지 마세요</strong><br>
+                🔴 <strong>전문가 상담 없이 분석 결과만으로 투자하지 마세요</strong><br>
                 🔴 <strong>시장 조작, 규제 변화, 기술적 오류 등 예측 불가능한 위험이 존재합니다</strong><br><br>
                 <strong>이 도구는 분석 참고용일 뿐, 투자 조언이 아닙니다.</strong>
             </div>
