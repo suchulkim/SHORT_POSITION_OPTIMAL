@@ -80,6 +80,7 @@
 
         .nav-link {
             padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
             color: white;
             text-decoration: none;
             border-radius: 10px;
@@ -91,38 +92,6 @@
         .nav-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        .nav-link.dashboard {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-        }
-
-        .nav-link.dashboard:hover {
-            background: linear-gradient(135deg, #0056b3, #004085);
-        }
-
-        .nav-link.market {
-            background: linear-gradient(135deg, #28a745, #1e7e34);
-        }
-
-        .nav-link.market:hover {
-            background: linear-gradient(135deg, #1e7e34, #155724);
-        }
-
-        .nav-link.pattern {
-            background: linear-gradient(135deg, #fd7e14, #e55100);
-        }
-
-        .nav-link.pattern:hover {
-            background: linear-gradient(135deg, #e55100, #bf360c);
-        }
-
-        .nav-link.ai {
-            background: linear-gradient(135deg, #6f42c1, #4e2a84);
-        }
-
-        .nav-link.ai:hover {
-            background: linear-gradient(135deg, #4e2a84, #3d1a6b);
         }
 
         .analysis-summary {
@@ -202,32 +171,12 @@
         }
 
         .chart-container {
-            height: 1200px;
-            min-height: 1200px;
+            height: 600px;
             margin-top: 1.5rem;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             background: var(--chart-bg);
-            width: 100%;
-        }
-
-        /* 차트 풀스크린 스타일 */
-        .chart-fullscreen {
-            width: calc(100vw - 40px);
-            height: 95vh;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            max-width: none;
-        }
-
-        .chart-fullscreen .chart-container {
-            height: calc(95vh - 100px);
-            min-height: calc(95vh - 100px);
-            border-radius: 0;
         }
 
         .history-section {
@@ -338,20 +287,6 @@
             font-weight: 700;
         }
 
-        .chart-btn {
-            transition: all 0.3s ease;
-        }
-
-        .chart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .chart-btn.active {
-            background: #2962FF !important;
-            transform: scale(1.05);
-        }
-
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
@@ -367,25 +302,7 @@
             }
             
             .chart-container {
-                height: 800px;
-                min-height: 800px;
-            }
-            
-            .chart-section {
-                padding: 0.5rem;
-            }
-            
-            .chart-fullscreen {
-                width: 100vw;
-                margin-left: -50vw;
-                margin-right: -50vw;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .chart-container {
-                height: 600px;
-                min-height: 600px;
+                height: 400px;
             }
         }
     </style>
@@ -395,15 +312,15 @@
         <!-- 헤더 -->
         <div class="header">
             <h1>🧠 AI 암호화폐 분석 결과</h1>
-            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-21 21:02:49</div>
+            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-21 21:07:02</div>
         </div>
 
         <!-- 네비게이션 -->
         <div class="nav-menu">
             <div class="nav-links">
-                <a href="dashboard.html" class="nav-link dashboard">📊 코인선물 종합지수
-                <a href="BinanceMarketOverview.html" class="nav-link market">🌍 코인선물 시장 현황
-                <a href="CandlePatternAnalysis.html" class="nav-link pattern">📈 코인선물 패턴 검출 현황
+                <a href="dashboard.html" class="nav-link">📊코인선물 종합 지수</a>
+                <a href="BinanceMarketOverview.html" class="nav-link">🌍 코인선물 시장 현황</a>
+                <a href="CandlePatternAnalysis.html" class="nav-link">📈 코인선물 패턴 검출 현황</a>
             </div>
         </div>
 
@@ -454,11 +371,11 @@
                     <div class="stat-label">신뢰도</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">49.8%</div>
+                    <div class="stat-value">49.5%</div>
                     <div class="stat-label">GO 확률</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$0.125730</div>
+                    <div class="stat-value">$0.127180</div>
                     <div class="stat-label">현재가</div>
                 </div>
                 <div class="stat-card">
@@ -470,7 +387,7 @@
             
         <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px; border: 1px solid var(--border-color);">
             <h4 style="color: var(--primary-color); margin-bottom: 1rem;">🔍 AI 판단 근거</h4>
-            <p style='margin-bottom: 0.5rem;'>🟡 <strong>RSI:</strong> RSI 64.8로 중립 구간</p><p style='margin-bottom: 0.5rem;'>🟡 <strong>ATR:</strong> ATR: 0.043</p><p style='margin-bottom: 0.5rem;'>🔴 <strong>1봉전_양음봉:</strong> 1봉전_양음봉 양봉으로 상승 압력</p>
+            <p style='margin-bottom: 0.5rem;'>🟡 <strong>RSI:</strong> RSI 66.1로 중립 구간</p><p style='margin-bottom: 0.5rem;'>🟡 <strong>ATR:</strong> ATR: 0.043</p><p style='margin-bottom: 0.5rem;'>🟡 <strong>스토캐스틱_K:</strong> 스토캐스틱_K: 0.618</p>
             <p style="margin-top: 1rem;"><strong>핵심 인사이트:</strong> 숏 불리 요인: 1봉전_양음봉, 12봉_수익률</p>
         </div>
         
@@ -479,374 +396,49 @@
 
         <!-- 개선된 실시간 차트 -->
         
-        <div class="chart-section" id="chartSection">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
-                <h2 class="section-title">📈 HOOKUSDT 실시간 차트</h2>
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <button onclick="changeInterval('15')" id="btn15m" class="chart-btn"
-                            style="padding: 0.5rem 1rem; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        15분
-                    </button>
-                    <button onclick="changeInterval('60')" id="btn1h" class="chart-btn"
-                            style="padding: 0.5rem 1rem; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        1시간
-                    </button>
-                    <button onclick="changeInterval('240')" id="btn4h" class="chart-btn active"
-                            style="padding: 0.5rem 1rem; background: #2962FF; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        4시간
-                    </button>
-                    <button onclick="changeInterval('1D')" id="btn1d" class="chart-btn"
-                            style="padding: 0.5rem 1rem; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        일봉
-                    </button>
-                    <button onclick="showPriceInfo()" id="priceBtn" class="chart-btn"
-                            style="padding: 0.5rem 1rem; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        💰 가격정보
-                    </button>
-                    <button onclick="openBinanceChart()" id="binanceBtn"
-                            style="padding: 0.5rem 1rem; background: #f0b90b; color: #000; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9rem;">
-                        🚀 바이낸스 열기
-                    </button>
-                    <button onclick="toggleChartSize()" id="chartToggleBtn" 
-                            style="padding: 0.5rem 1rem; background: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
-                        🔍 확대
-                    </button>
-                </div>
-            </div>
-            
-            <!-- 현재가 표시 -->
-            <div id="priceDisplay" style="background: #1a1a1a; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
-                <div style="color: white;">
-                    <span style="color: #f0b90b; font-weight: bold; font-size: 1.2rem;">HOOKUSDT</span>
-                    <span id="currentPrice" style="margin-left: 1rem; font-size: 1.5rem; font-weight: bold; color: #00ff88;">로딩중...</span>
-                    <span id="priceChange" style="margin-left: 1rem; font-size: 1rem;">0.00%</span>
-                </div>
-                <div style="color: #ccc; font-size: 0.9rem;">
-                    실시간 TradingView 데이터
-                </div>
-            </div>
-            
-            <!-- 차트 상태 표시 -->
-            <div id="chartStatus" style="display: none; background: #fff3cd; border: 1px solid #ffeaa7; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; text-align: center;">
-                <span id="statusText">차트를 로딩중입니다...</span>
-            </div>
-            
-            <!-- TradingView 차트 -->
-            <div class="chart-container" id="tradingViewContainer" style="height: 1200px !important; width: 100% !important; display: block;">
-                <div id="tradingview_chart" style="height: 1200px !important; width: 100% !important; min-height: 1200px !important;"></div>
-            </div>
-            
-            <!-- 가격 정보 대시보드 -->
-            <div class="chart-container" id="priceInfoContainer" style="height: 1200px !important; width: 100% !important; display: none; background: #1a1a1a; border-radius: 10px; padding: 2rem;">
-                <div style="color: white; text-align: center;">
-                    <h2 style="color: #f0b90b; margin-bottom: 2rem;">HOOKUSDT 상세 정보</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                        <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
-                            <h3 style="color: #00ff88;">현재가</h3>
-                            <div id="detailCurrentPrice" style="font-size: 2.5rem; font-weight: bold;">TradingView에서 확인</div>
-                        </div>
-                        <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
-                            <h3 style="color: #ff4444;">24시간 변동</h3>
-                            <div id="detailPriceChange" style="font-size: 2rem; font-weight: bold;">TradingView에서 확인</div>
-                        </div>
-                        <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
-                            <h3 style="color: #ffaa00;">24시간 거래량</h3>
-                            <div id="volume24h" style="font-size: 1.5rem; font-weight: bold;">TradingView에서 확인</div>
-                        </div>
-                        <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
-                            <h3 style="color: #00aaff;">24시간 최고가</h3>
-                            <div id="high24h" style="font-size: 1.5rem; font-weight: bold;">TradingView에서 확인</div>
-                        </div>
-                        <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
-                            <h3 style="color: #ff6b6b;">24시간 최저가</h3>
-                            <div id="low24h" style="font-size: 1.5rem; font-weight: bold;">TradingView에서 확인</div>
-                        </div>
-                        <div style="background: #2a2a2a; padding: 2rem; border-radius: 15px;">
-                            <h3 style="color: #a78bfa;">분석 도구</h3>
-                            <div style="font-size: 1.5rem; font-weight: bold;">TradingView 차트 참조</div>
-                        </div>
-                    </div>
-                    
-                    <!-- 차트 링크들 -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                        <a href="https://www.binance.com/en/trade/HOOK_USDT" target="_blank" 
-                        style="background: #f0b90b; color: #000; padding: 1.5rem; border-radius: 10px; text-decoration: none; font-weight: bold; display: block;">
-                            🚀 바이낸스에서 거래하기
-                        </a>
-                        <a href="https://www.coingecko.com/en/coins/hook" target="_blank"
-                        style="background: #8dc647; color: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; font-weight: bold; display: block;">
-                            🦎 CoinGecko에서 보기
-                        </a>
-                        <a href="https://www.tradingview.com/chart/?symbol=BINANCE:HOOKUSDT" target="_blank"
-                        style="background: #2962FF; color: white; padding: 1.5rem; border-radius: 10px; text-decoration: none; font-weight: bold; display: block;">
-                            📈 TradingView 전체화면
-                        </a>
-                        <button onclick="showTradingViewChart()" 
-                                style="background: #6f42c1; color: white; padding: 1.5rem; border-radius: 10px; border: none; font-weight: bold; cursor: pointer;">
-                            📊 차트로 돌아가기
-                        </button>
-                    </div>
-                    
-                    <div style="margin-top: 2rem; padding: 1rem; background: #333; border-radius: 10px;">
-                        <p style="color: #ccc;">💡 <strong>팁:</strong> TradingView 차트에서 직접 모든 기술적 분석 도구를 사용할 수 있습니다.</p>
-                    </div>
-                </div>
+        <div class="chart-section">
+            <h2 class="section-title">📈 HOOKUSDT 실시간 차트 (4시간봉)</h2>
+            <div class="chart-container">
+                <div id="tradingview_chart"></div>
             </div>
         </div>
         
-        <!-- TradingView 스크립트 로드 -->
-        <script src="https://s3.tradingview.com/tv.js"></script>
-        
         <script>
-            let widget = null;
-            let isChartExpanded = false;
-            let currentInterval = '240'; // 기본 4시간
-            let priceUpdateInterval = null;
-            
-            // TradingView 위젯 초기화
-            function initTradingViewWidget() {
-                showStatus('TradingView 위젯을 초기화하는 중...');
-                
-                try {
-                    // 기존 위젯이 있으면 제거
-                    if (widget) {
-                        widget.remove();
-                        widget = null;
-                    }
-                    
-                    // 컨테이너 확인 및 초기화
-                    const container = document.getElementById('tradingview_chart');
-                    if (!container) {
-                        console.error('TradingView 컨테이너를 찾을 수 없습니다.');
-                        showStatus('차트 컨테이너 오류가 발생했습니다.');
-                        return;
-                    }
-                    
-                    // 컨테이너 비우기
-                    container.innerHTML = '';
-                    
-                    // TradingView 위젯 생성
-                    widget = new TradingView.widget({
-                        "width": "100%",
-                        "height": "100%",
-                        "symbol": "BINANCE:HOOKUSDT",
-                        "interval": currentInterval,
-                        "timezone": "Asia/Seoul",
-                        "theme": "dark",
-                        "style": "1",
-                        "locale": "kr",
-                        "toolbar_bg": "#1a1a1a",
-                        "enable_publishing": false,
-                        "hide_top_toolbar": false,
-                        "hide_legend": false,
-                        "save_image": false,
-                        "container_id": "tradingview_chart",
-                        "studies": [
-                            "RSI@tv-basicstudies",
-                            "MASimple@tv-basicstudies",
-                            "Volume@tv-basicstudies"
-                        ],
-                        "loading_screen": {
-                            "backgroundColor": "#1a1a1a",
-                            "foregroundColor": "#ffffff"
-                        },
-                        "overrides": {
-                            "paneProperties.background": "#1a1a1a",
-                            "paneProperties.backgroundType": "solid",
-                            "paneProperties.vertGridProperties.color": "#2a2a2a",
-                            "paneProperties.horzGridProperties.color": "#2a2a2a",
-                            "symbolWatermarkProperties.transparency": 95,
-                            "scalesProperties.textColor": "#ffffff",
-                            "scalesProperties.backgroundColor": "#1a1a1a",
-                            "mainSeriesProperties.candleStyle.upColor": "#00ff88",
-                            "mainSeriesProperties.candleStyle.downColor": "#ff4444",
-                            "mainSeriesProperties.candleStyle.borderUpColor": "#00ff88",
-                            "mainSeriesProperties.candleStyle.borderDownColor": "#ff4444",
-                            "mainSeriesProperties.candleStyle.wickUpColor": "#00ff88",
-                            "mainSeriesProperties.candleStyle.wickDownColor": "#ff4444"
-                        },
-                        "onChartReady": function() {
-                            console.log('TradingView 차트 로딩 완료');
-                            hideStatus();
-                            loadCurrentPrice();
-                        }
-                    });
-                    
-                    console.log('TradingView 위젯 생성 완료');
-                    
-                } catch (error) {
-                    console.error('TradingView 위젯 생성 실패:', error);
-                    showStatus('TradingView 로딩에 실패했습니다. 페이지를 새로고침해보세요.');
-                }
-            }
-            
-            // 시간 간격 변경
-            function changeInterval(interval) {
-                currentInterval = interval;
-                
-                // 버튼 스타일 업데이트
-                document.querySelectorAll('.chart-btn').forEach(btn => {
-                    btn.style.background = '#666';
-                });
-                
-                // 활성 버튼 스타일 적용
-                const intervalBtns = {
-                    '15': 'btn15m',
-                    '60': 'btn1h', 
-                    '240': 'btn4h',
-                    '1D': 'btn1d'
-                };
-                
-                const activeBtn = document.getElementById(intervalBtns[interval]);
-                if (activeBtn) {
-                    activeBtn.style.background = '#2962FF';
-                }
-                
-                // 위젯 다시 생성
-                initTradingViewWidget();
-            }
-            
-            // 현재가 로드 (간단한 시도)
-            async function loadCurrentPrice() {
-                try {
-                    // Binance API 직접 시도 (CORS 문제로 실패할 수 있음)
-                    const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=HOOKUSDT`);
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        const price = parseFloat(data.price);
-                        
-                        document.getElementById('currentPrice').textContent = '$' + price.toFixed(6);
-                        document.getElementById('currentPrice').style.color = '#00ff88';
-                    } else {
-                        throw new Error('API 응답 오류');
-                    }
-                } catch (error) {
-                    // CORS 오류 또는 기타 문제 시 TradingView 데이터 참조 메시지
-                    document.getElementById('currentPrice').textContent = 'TradingView 차트 참조';
-                    document.getElementById('currentPrice').style.color = '#ccc';
-                    document.getElementById('priceChange').textContent = 'TradingView 차트 참조';
-                    document.getElementById('priceChange').style.color = '#ccc';
-                }
-            }
-            
-            // 뷰 전환 함수들
-            function showTradingViewChart() {
-                document.getElementById('tradingViewContainer').style.display = 'block';
-                document.getElementById('priceInfoContainer').style.display = 'none';
-                
-                // 위젯 크기 재조정
-                if (widget) {
-                    setTimeout(() => {
-                        widget.resize(
-                            document.getElementById('tradingview_chart').clientWidth,
-                            document.getElementById('tradingview_chart').clientHeight
-                        );
-                    }, 100);
-                }
-            }
-            
-            function showPriceInfo() {
-                document.getElementById('tradingViewContainer').style.display = 'none';
-                document.getElementById('priceInfoContainer').style.display = 'block';
-                
-                // 버튼 스타일 업데이트
-                document.getElementById('priceBtn').style.background = '#28a745';
-            }
-            
-            function openBinanceChart() {
-                const url = 'https://www.binance.com/en/trade/HOOK_USDT';
-                window.open(url, '_blank', 'width=1400,height=900');
-            }
-            
-            function toggleChartSize() {
-                const chartSection = document.getElementById('chartSection');
-                const container = document.getElementById('tradingViewContainer');
-                const toggleBtn = document.getElementById('chartToggleBtn');
-                
-                if (!isChartExpanded) {
-                    const newHeight = Math.max(800, window.innerHeight - 150);
-                    chartSection.classList.add('chart-fullscreen');
-                    container.style.height = newHeight + 'px';
-                    
-                    // TradingView 차트도 크기 조정
-                    const chartDiv = document.getElementById('tradingview_chart');
-                    chartDiv.style.height = (newHeight - 40) + 'px';
-                    
-                    toggleBtn.innerHTML = '🔍 축소';
-                    isChartExpanded = true;
-                    
-                    // 위젯 크기 재조정
-                    if (widget) {
-                        setTimeout(() => {
-                            widget.resize('100%', newHeight - 40);
-                        }, 100);
-                    }
-                } else {
-                    chartSection.classList.remove('chart-fullscreen');
-                    container.style.height = '1200px';
-                    
-                    const chartDiv = document.getElementById('tradingview_chart');
-                    chartDiv.style.height = '1200px';
-                    
-                    toggleBtn.innerHTML = '🔍 확대';
-                    isChartExpanded = false;
-                    
-                    // 위젯 크기 재조정
-                    if (widget) {
-                        setTimeout(() => {
-                            widget.resize('100%', 1200);
-                        }, 100);
-                    }
-                }
-            }
-            
-            // 상태 표시/숨김
-            function showStatus(message) {
-                document.getElementById('statusText').textContent = message;
-                document.getElementById('chartStatus').style.display = 'block';
-            }
-            
-            function hideStatus() {
-                document.getElementById('chartStatus').style.display = 'none';
-            }
-            
-            // TradingView 스크립트 로드 확인 및 초기화
-            function initChart() {
-                if (typeof TradingView !== 'undefined') {
-                    console.log('TradingView 라이브러리 로드 완료');
-                    initTradingViewWidget();
-                } else {
-                    console.log('TradingView 라이브러리 로딩 대기 중...');
-                    setTimeout(initChart, 1000); // 1초 후 다시 시도
-                }
-            }
-            
-            // 페이지 로드 시 초기화
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('페이지 로드 완료, TradingView 차트 초기화 시작...');
-                
-                // TradingView 스크립트가 로드될 때까지 대기
-                setTimeout(initChart, 1000);
-            });
-            
-            // 윈도우 리사이즈 이벤트 처리
-            window.addEventListener('resize', function() {
-                if (widget && document.getElementById('tradingViewContainer').style.display !== 'none') {
-                    setTimeout(() => {
-                        const container = document.getElementById('tradingview_chart');
-                        widget.resize(container.clientWidth, container.clientHeight);
-                    }, 100);
-                }
-            });
-            
-            // 페이지 언로드시 정리
-            window.addEventListener('beforeunload', function() {
-                if (widget) {
-                    widget.remove();
-                }
-                if (priceUpdateInterval) {
-                    clearInterval(priceUpdateInterval);
+            new TradingView.widget({
+                "autosize": true,
+                "symbol": "BINANCE:HOOKUSDT",
+                "interval": "240",
+                "timezone": "Asia/Seoul",
+                "theme": "dark",
+                "style": "1",
+                "locale": "kr",
+                "toolbar_bg": "#1e222d",
+                "enable_publishing": false,
+                "hide_top_toolbar": false,
+                "hide_legend": false,
+                "save_image": false,
+                "container_id": "tradingview_chart",
+                "studies": [
+                    "RSI@tv-basicstudies",
+                    "MASimple@tv-basicstudies",
+                    "Volume@tv-basicstudies"
+                ],
+                "overrides": {
+                    "paneProperties.background": "#1e222d",
+                    "paneProperties.vertGridProperties.color": "#2a2e39",
+                    "paneProperties.horzGridProperties.color": "#2a2e39",
+                    "symbolWatermarkProperties.transparency": 90,
+                    "scalesProperties.textColor": "#AAA",
+                    "mainSeriesProperties.candleStyle.upColor": "#26a69a",
+                    "mainSeriesProperties.candleStyle.downColor": "#ef5350",
+                    "mainSeriesProperties.candleStyle.drawWick": true,
+                    "mainSeriesProperties.candleStyle.drawBorder": true,
+                    "mainSeriesProperties.candleStyle.borderColor": "#378658",
+                    "mainSeriesProperties.candleStyle.borderUpColor": "#26a69a",
+                    "mainSeriesProperties.candleStyle.borderDownColor": "#ef5350",
+                    "mainSeriesProperties.candleStyle.wickUpColor": "#26a69a",
+                    "mainSeriesProperties.candleStyle.wickDownColor": "#ef5350",
+                    "volumePaneSize": "medium"
                 }
             });
         </script>
@@ -874,8 +466,18 @@
                     <tbody>
                         
                 <tr>
+                    <td style="font-size: 0.9rem;">2025-09-21 21:07</td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:HOOKUSDT&interval=240" target="_blank" class="symbol-link">HOOKUSDT</a></td>
+                    <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">38</td>
+                    <td>44.0%</td>
+                    <td>49.5%</td>
+                    <td><span class="risk-badge risk-high">HIGH</span></td>
+                </tr>
+            
+                <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 21:02</td>
-                    <td><a href="https://www.binance.com/en/futures/HOOKUSDT" target="_blank" class="symbol-link">HOOKUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:HOOKUSDT&interval=240" target="_blank" class="symbol-link">HOOKUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">38</td>
                     <td>44.0%</td>
@@ -885,7 +487,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 20:58</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">33</td>
                     <td>39.0%</td>
@@ -895,7 +497,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 20:56</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">33</td>
                     <td>39.0%</td>
@@ -905,7 +507,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 20:51</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">33</td>
                     <td>39.0%</td>
@@ -915,7 +517,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 20:34</td>
-                    <td><a href="https://www.binance.com/en/futures/BASUSDT" target="_blank" class="symbol-link">BASUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BASUSDT&interval=240" target="_blank" class="symbol-link">BASUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">33</td>
                     <td>39.0%</td>
@@ -925,7 +527,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 20:02</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">33</td>
                     <td>39.0%</td>
@@ -935,7 +537,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 19:32</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">33</td>
                     <td>39.0%</td>
@@ -945,7 +547,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 19:02</td>
-                    <td><a href="https://www.binance.com/en/futures/BANUSDT" target="_blank" class="symbol-link">BANUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BANUSDT&interval=240" target="_blank" class="symbol-link">BANUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">39</td>
                     <td>45.0%</td>
@@ -955,7 +557,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 18:32</td>
-                    <td><a href="https://www.binance.com/en/futures/BANUSDT" target="_blank" class="symbol-link">BANUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BANUSDT&interval=240" target="_blank" class="symbol-link">BANUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">33</td>
                     <td>39.0%</td>
@@ -965,7 +567,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 18:05</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">35</td>
                     <td>41.0%</td>
@@ -975,7 +577,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 17:52</td>
-                    <td><a href="https://www.binance.com/en/futures/XPINUSDT" target="_blank" class="symbol-link">XPINUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPINUSDT&interval=240" target="_blank" class="symbol-link">XPINUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">41</td>
                     <td>47.0%</td>
@@ -985,7 +587,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 17:39</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">34</td>
                     <td>42.0%</td>
@@ -995,7 +597,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 17:37</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">34</td>
                     <td>42.0%</td>
@@ -1005,7 +607,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 17:35</td>
-                    <td><a href="https://www.binance.com/en/futures/KOMAUSDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:KOMAUSDT&interval=240" target="_blank" class="symbol-link">KOMAUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">34</td>
                     <td>42.0%</td>
@@ -1015,7 +617,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 17:02</td>
-                    <td><a href="https://www.binance.com/en/futures/BANUSDT" target="_blank" class="symbol-link">BANUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:BANUSDT&interval=240" target="_blank" class="symbol-link">BANUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">40</td>
                     <td>46.0%</td>
@@ -1025,7 +627,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 16:32</td>
-                    <td><a href="https://www.binance.com/en/futures/XPLUSDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPLUSDT&interval=240" target="_blank" class="symbol-link">XPLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">40</td>
                     <td>46.0%</td>
@@ -1035,7 +637,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 16:02</td>
-                    <td><a href="https://www.binance.com/en/futures/XPLUSDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPLUSDT&interval=240" target="_blank" class="symbol-link">XPLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">36</td>
                     <td>48.0%</td>
@@ -1045,7 +647,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 15:32</td>
-                    <td><a href="https://www.binance.com/en/futures/XPLUSDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPLUSDT&interval=240" target="_blank" class="symbol-link">XPLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">40</td>
                     <td>46.0%</td>
@@ -1055,7 +657,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 15:02</td>
-                    <td><a href="https://www.binance.com/en/futures/XPLUSDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPLUSDT&interval=240" target="_blank" class="symbol-link">XPLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">45</td>
                     <td>51.0%</td>
@@ -1065,7 +667,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 14:24</td>
-                    <td><a href="https://www.binance.com/en/futures/XPLUSDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPLUSDT&interval=240" target="_blank" class="symbol-link">XPLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">41</td>
                     <td>47.0%</td>
@@ -1075,7 +677,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 14:05</td>
-                    <td><a href="https://www.binance.com/en/futures/XPLUSDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPLUSDT&interval=240" target="_blank" class="symbol-link">XPLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">42</td>
                     <td>48.0%</td>
@@ -1085,7 +687,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 13:04</td>
-                    <td><a href="https://www.binance.com/en/futures/XPLUSDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:XPLUSDT&interval=240" target="_blank" class="symbol-link">XPLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1095,7 +697,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 12:32</td>
-                    <td><a href="https://www.binance.com/en/futures/TWTUSDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TWTUSDT&interval=240" target="_blank" class="symbol-link">TWTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">55</td>
                     <td>61.0%</td>
@@ -1105,7 +707,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 12:03</td>
-                    <td><a href="https://www.binance.com/en/futures/TWTUSDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TWTUSDT&interval=240" target="_blank" class="symbol-link">TWTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">54</td>
                     <td>60.0%</td>
@@ -1115,7 +717,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 11:33</td>
-                    <td><a href="https://www.binance.com/en/futures/TWTUSDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TWTUSDT&interval=240" target="_blank" class="symbol-link">TWTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">53</td>
                     <td>59.0%</td>
@@ -1125,7 +727,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 11:18</td>
-                    <td><a href="https://www.binance.com/en/futures/TWTUSDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TWTUSDT&interval=240" target="_blank" class="symbol-link">TWTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">53</td>
                     <td>59.0%</td>
@@ -1135,7 +737,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 05:45</td>
-                    <td><a href="https://www.binance.com/en/futures/STBLUSDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:STBLUSDT&interval=240" target="_blank" class="symbol-link">STBLUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">54</td>
                     <td>60.0%</td>
@@ -1145,7 +747,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 00:36</td>
-                    <td><a href="https://www.binance.com/en/futures/TUTUSDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TUTUSDT&interval=240" target="_blank" class="symbol-link">TUTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1155,7 +757,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 00:31</td>
-                    <td><a href="https://www.binance.com/en/futures/TUTUSDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TUTUSDT&interval=240" target="_blank" class="symbol-link">TUTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1165,7 +767,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 00:31</td>
-                    <td><a href="https://www.binance.com/en/futures/TUTUSDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TUTUSDT&interval=240" target="_blank" class="symbol-link">TUTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1175,7 +777,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 00:28</td>
-                    <td><a href="https://www.binance.com/en/futures/TUTUSDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TUTUSDT&interval=240" target="_blank" class="symbol-link">TUTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">43</td>
                     <td>49.0%</td>
@@ -1185,7 +787,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 00:23</td>
-                    <td><a href="https://www.binance.com/en/futures/AINUSDT" target="_blank" class="symbol-link">AINUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:AINUSDT&interval=240" target="_blank" class="symbol-link">AINUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1195,7 +797,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 00:11</td>
-                    <td><a href="https://www.binance.com/en/futures/TUTUSDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:TUTUSDT&interval=240" target="_blank" class="symbol-link">TUTUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">43</td>
                     <td>49.0%</td>
@@ -1205,7 +807,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-21 00:03</td>
-                    <td><a href="https://www.binance.com/en/futures/OMNIUSDT" target="_blank" class="symbol-link">OMNIUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OMNIUSDT&interval=240" target="_blank" class="symbol-link">OMNIUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">47</td>
                     <td>53.0%</td>
@@ -1215,7 +817,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 23:38</td>
-                    <td><a href="https://www.binance.com/en/futures/AINUSDT" target="_blank" class="symbol-link">AINUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:AINUSDT&interval=240" target="_blank" class="symbol-link">AINUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1225,7 +827,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 23:27</td>
-                    <td><a href="https://www.binance.com/en/futures/AINUSDT" target="_blank" class="symbol-link">AINUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:AINUSDT&interval=240" target="_blank" class="symbol-link">AINUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1235,7 +837,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 17:48</td>
-                    <td><a href="https://www.binance.com/en/futures/NAORISUSDT" target="_blank" class="symbol-link">NAORISUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:NAORISUSDT&interval=240" target="_blank" class="symbol-link">NAORISUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">41</td>
                     <td>47.0%</td>
@@ -1245,7 +847,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 17:18</td>
-                    <td><a href="https://www.binance.com/en/futures/NAORISUSDT" target="_blank" class="symbol-link">NAORISUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:NAORISUSDT&interval=240" target="_blank" class="symbol-link">NAORISUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">41</td>
                     <td>47.0%</td>
@@ -1255,7 +857,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 16:07</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">43</td>
                     <td>49.0%</td>
@@ -1265,7 +867,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 15:32</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">43</td>
                     <td>49.0%</td>
@@ -1275,7 +877,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 15:30</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">43</td>
                     <td>49.0%</td>
@@ -1285,7 +887,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 15:24</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">43</td>
                     <td>49.0%</td>
@@ -1295,7 +897,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 15:14</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">48</td>
                     <td>54.0%</td>
@@ -1305,7 +907,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 15:04</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">44</td>
                     <td>50.0%</td>
@@ -1315,7 +917,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 14:59</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">48</td>
                     <td>54.0%</td>
@@ -1325,7 +927,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 14:44</td>
-                    <td><a href="https://www.binance.com/en/futures/OGUSDT" target="_blank" class="symbol-link">OGUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OGUSDT&interval=240" target="_blank" class="symbol-link">OGUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">45</td>
                     <td>51.0%</td>
@@ -1335,7 +937,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 14:04</td>
-                    <td><a href="https://www.binance.com/en/futures/OMNIUSDT" target="_blank" class="symbol-link">OMNIUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:OMNIUSDT&interval=240" target="_blank" class="symbol-link">OMNIUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">43</td>
                     <td>49.0%</td>
@@ -1345,7 +947,7 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 14:04</td>
-                    <td><a href="https://www.binance.com/en/futures/QUSDT" target="_blank" class="symbol-link">QUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:QUSDT&interval=240" target="_blank" class="symbol-link">QUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">38</td>
                     <td>44.0%</td>
@@ -1355,21 +957,11 @@
             
                 <tr>
                     <td style="font-size: 0.9rem;">2025-09-20 14:04</td>
-                    <td><a href="https://www.binance.com/en/futures/UBUSDT" target="_blank" class="symbol-link">UBUSDT</a></td>
+                    <td><a href="https://www.tradingview.com/chart/?symbol=BINANCE:UBUSDT&interval=240" target="_blank" class="symbol-link">UBUSDT</a></td>
                     <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
                     <td style="font-weight: bold; color: var(--accent-color);">32</td>
                     <td>38.0%</td>
                     <td>50.8%</td>
-                    <td><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 0.9rem;">2025-09-20 13:45</td>
-                    <td><a href="https://www.binance.com/en/futures/OMNIUSDT" target="_blank" class="symbol-link">OMNIUSDT</a></td>
-                    <td><span class="decision-badge decision-nogo" style="font-size: 0.7rem; padding: 0.3rem 0.6rem;">NOGO</span></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">42</td>
-                    <td>48.0%</td>
-                    <td>53.7%</td>
                     <td><span class="risk-badge risk-high">HIGH</span></td>
                 </tr>
             
