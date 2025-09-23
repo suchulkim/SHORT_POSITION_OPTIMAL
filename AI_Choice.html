@@ -11,9 +11,9 @@
             --primary-color: #1a1a2e;
             --secondary-color: #16213e;
             --accent-color: #0f4c75;
-            --success-color: #00c851;
-            --warning-color: #ffbb33;
-            --danger-color: #ff4444;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
             --text-color: #2c3e50;
@@ -78,7 +78,6 @@
             flex-wrap: wrap;
         }
 
-        /* 개선된 네비게이션 버튼 스타일 - 각기 다른 색상과 큰 글씨 */
         .nav-link {
             padding: 1.3rem 2.5rem;
             color: white;
@@ -152,7 +151,6 @@
             font-weight: 500;
         }
 
-        /* 개선된 차트 섹션 - 더 큰 크기와 컨트롤 버튼 */
         .chart-section {
             background: var(--card-bg);
             border-radius: 15px;
@@ -202,17 +200,6 @@
             box-shadow: 0 4px 12px rgba(240, 185, 11, 0.4);
         }
 
-        .fullscreen-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .fullscreen-btn:hover {
-            background: linear-gradient(135deg, #764ba2, #667eea);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-
         .chart-container {
             height: 800px;
             margin-top: 1.5rem;
@@ -220,18 +207,6 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             background: var(--chart-bg);
-            position: relative;
-        }
-
-        .chart-container.fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 9999;
-            border-radius: 0;
-            margin: 0;
         }
 
         .history-section {
@@ -264,17 +239,13 @@
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .history-table tr:hover {
             background: #f8f9fa;
-        }
-
-        .history-table td:first-child {
-            font-size: 1.3rem;  /* 날짜 컬럼 */
         }
 
         .symbol-link {
@@ -295,7 +266,7 @@
         .risk-badge {
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -318,7 +289,38 @@
             border: 1px solid #f5c6cb;
         }
 
+        /* 48시간 추적 결과 스타일 */
+        .tracking-result {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+        }
 
+        .tracking-profit {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+
+        .tracking-loss {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+
+        .tracking-pending {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            color: #856404;
+            border: 2px solid #ffc107;
+        }
+
+        .tracking-failed {
+            background: #e9ecef;
+            color: #6c757d;
+            border: 2px solid #adb5bd;
+        }
 
         .warning-box {
             background: linear-gradient(135deg, #fff3cd, #ffeaa7);
@@ -348,6 +350,27 @@
             font-weight: 700;
         }
 
+        .tracking-info {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border: 2px solid #2196f3;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.2);
+        }
+
+        .tracking-info-title {
+            color: #1565c0;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tracking-info-text {
+            color: #1976d2;
+            line-height: 1.6;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
@@ -375,6 +398,15 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .history-table {
+                font-size: 0.9rem;
+            }
+            
+            .history-table th,
+            .history-table td {
+                padding: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -383,7 +415,7 @@
         <!-- 헤더 -->
         <div class="header">
             <h1>🧠 AI 코인선물 종목 분석</h1>
-            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-23 19:33:49</div>
+            <div class="subtitle">실제 학습된 신경망 기반 분석 • 2025-09-23 20:34:59</div>
         </div>
 
         <!-- 개선된 네비게이션 -->
@@ -398,37 +430,43 @@
         <!-- 최고 점수 종목 분석 -->
         
         <div class="analysis-summary">
-            <h2 class="section-title">📈 최고 점수 종목 상세 분석</h2>
-            <h3 style="color: var(--accent-color); margin-bottom: 1.5rem;">PIPPINUSDT</h3>
+            <h2 class="section-title">📈 AI 최고 점수 종목 </h2>
+            <h3 style="color: var(--accent-color); margin-bottom: 1.5rem;">SUNUSDT</h3>
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-value">PIPPINUSDT</div>
+                    <div class="stat-value">SUNUSDT</div>
                     <div class="stat-label">종목명</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">54</div>
+                    <div class="stat-value">53</div>
                     <div class="stat-label">최종 점수</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">54.0%</div>
+                    <div class="stat-value">53.0%</div>
                     <div class="stat-label">신뢰도</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">53.7%</div>
+                    <div class="stat-value">52.8%</div>
                     <div class="stat-label">GO 확률</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$0.019650</div>
+                    <div class="stat-value">$0.030876</div>
                     <div class="stat-label">현재가</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value risk-badge risk-high">HIGH</div>
+                    <div class="stat-value risk-badge risk-medium">MEDIUM</div>
                     <div class="stat-label">리스크</div>
                 </div>
             </div>
             
-            
+            <div class="tracking-info">
+                <div class="tracking-info-title">📊 48시간 추적 시스템</div>
+                <div class="tracking-info-text">
+                    이 종목은 48시간 후 실제 가격 변화를 자동으로 추적하여 분석 정확도를 검증합니다. 
+                    추적 결과는 아래 히스토리 테이블에서 확인할 수 있습니다.
+                </div>
+            </div>
         </div>
         
 
@@ -436,62 +474,24 @@
         
         <div class="chart-section" id="chartSection">
             <div class="chart-header">
-                <h2 class="section-title">📈 PIPPINUSDT 실시간 차트 (4시간봉)</h2>
+                <h2 class="section-title">📈 SUNUSDT 실시간 차트 (4시간봉)</h2>
                 <div class="chart-controls">
-                    <a href="https://www.binance.com/en/futures/PIPPIN_USDT" target="_blank" class="chart-btn binance-btn">
+                    <a href="https://www.binance.com/en/futures/SUN_USDT" target="_blank" class="chart-btn binance-btn">
                         🏦 바이낸스에서 보기
                     </a>
-                    <button onclick="toggleChartSize()" class="chart-btn fullscreen-btn" id="chartToggleBtn">
-                        🔍 확대
-                    </button>
                 </div>
             </div>
-            <div class="chart-container" id="chartContainer" style="height: 1200px !important; width: 100% !important;">
-                <div id="tradingview_chart" style="height: 1200px !important; width: 100% !important;"></div>
+            <div class="chart-container" id="chartContainer">
+                <div id="tradingview_chart" style="height: 800px; width: 100%;"></div>
             </div>
         </div>
         
         <script>
-            let isChartExpanded = false;
-            let widget = null;
-            
-            function toggleChartSize() {
-                const chartSection = document.getElementById('chartSection');
-                const chartContainer = document.getElementById('chartContainer');
-                const chartDiv = document.getElementById('tradingview_chart');
-                const toggleBtn = document.getElementById('chartToggleBtn');
-                
-                if (!isChartExpanded) {
-                    // 확대
-                    const newHeight = Math.max(800, window.innerHeight - 150);
-                    chartSection.classList.add('chart-fullscreen');
-                    chartContainer.style.height = newHeight + 'px';
-                    chartDiv.style.height = newHeight + 'px';
-                    toggleBtn.innerHTML = '🔍 축소';
-                    isChartExpanded = true;
-                } else {
-                    // 축소
-                    chartSection.classList.remove('chart-fullscreen');
-                    chartContainer.style.height = '1200px';
-                    chartDiv.style.height = '1200px';
-                    toggleBtn.innerHTML = '🔍 확대';
-                    isChartExpanded = false;
-                }
-                
-                // 강제 리사이즈
-                if (widget && widget.iframe) {
-                    setTimeout(() => {
-                        widget.iframe.style.height = chartDiv.style.height;
-                        widget.iframe.style.width = '100%';
-                    }, 100);
-                }
-            }
-            
-            // TradingView 위젯 생성 - 개선된 시인성
-            widget = new TradingView.widget({
-                "width": 1400,
-                "height": 1200,
-                "symbol": "BINANCE:PIPPINUSDT",
+            // TradingView 위젯 생성
+            new TradingView.widget({
+                "width": "100%",
+                "height": 800,
+                "symbol": "BINANCE:SUNUSDT",
                 "interval": "240",
                 "timezone": "Asia/Seoul",
                 "theme": "dark",
@@ -507,980 +507,493 @@
                     "RSI@tv-basicstudies",
                     "MASimple@tv-basicstudies",
                     "Volume@tv-basicstudies"
-                ],
-                "overrides": {
-                    "paneProperties.background": "#000000",
-                    "paneProperties.backgroundType": "solid",
-                    "paneProperties.vertGridProperties.color": "#1a1a1a",
-                    "paneProperties.horzGridProperties.color": "#1a1a1a",
-                    "paneProperties.vertGridProperties.style": 0,
-                    "paneProperties.horzGridProperties.style": 0,
-                    "symbolWatermarkProperties.transparency": 95,
-                    "scalesProperties.textColor": "#ffffff",
-                    "scalesProperties.backgroundColor": "#000000",
-                    "scalesProperties.fontSize": 16,
-                    "scalesProperties.lineColor": "#ffffff",
-                    "mainSeriesProperties.candleStyle.upColor": "#00ff88",
-                    "mainSeriesProperties.candleStyle.downColor": "#ff4444",
-                    "mainSeriesProperties.candleStyle.drawWick": true,
-                    "mainSeriesProperties.candleStyle.drawBorder": true,
-                    "mainSeriesProperties.candleStyle.borderColor": "#ffffff",
-                    "mainSeriesProperties.candleStyle.borderUpColor": "#00ff88",
-                    "mainSeriesProperties.candleStyle.borderDownColor": "#ff4444",
-                    "mainSeriesProperties.candleStyle.wickUpColor": "#00ff88",
-                    "mainSeriesProperties.candleStyle.wickDownColor": "#ff4444",
-                    "volumePaneSize": "medium",
-                    "studies.volume.volume.color.0": "#ff4444",
-                    "studies.volume.volume.color.1": "#00ff88",
-                    "studies.volume.volume.transparency": 50,
-                    "studies.RSI.rsi.color": "#ffaa00",
-                    "studies.RSI.upperband.color": "#ff4444",
-                    "studies.RSI.lowerband.color": "#00ff88"
-                }
-            });
-            
-            // 로딩 완료 후 크기 강제 조정
-            setTimeout(() => {
-                const chartDiv = document.getElementById('tradingview_chart');
-                const iframe = chartDiv.querySelector('iframe');
-                if (iframe) {
-                    iframe.style.height = '1200px !important';
-                    iframe.style.width = '100% !important';
-                }
-            }, 2000);
-            
-            // 윈도우 리사이즈 시에도 크기 조정
-            window.addEventListener('resize', () => {
-                setTimeout(() => {
-                    const chartDiv = document.getElementById('tradingview_chart');
-                    const iframe = chartDiv.querySelector('iframe');
-                    if (iframe && !isChartExpanded) {
-                        iframe.style.height = '1200px';
-                        iframe.style.width = '100%';
-                    }
-                }, 100);
+                ]
             });
         </script>
         
 
-        <!-- 종목 분석 히스토리 -->
+        <!-- 48시간 추적 히스토리 -->
         
         <div class="history-section">
-            <h2 class="section-title">📋 종목 분석 히스토리</h2>
-            <p style="margin-bottom: 1.5rem; color: #666;">기술적 분석으로 최고 점수를 얻은 종목들의 리스트입니다. 종목명을 클릭하면 차트로 이동합니다.</p>
+            <h2 class="section-title">📋 48시간 추적 히스토리</h2>
+            
+            <div class="tracking-info">
+                <div class="tracking-info-title">📊 추적 성과 요약 (완료된 거래 기준)</div>
+                <div class="tracking-info-text">
+                    <strong>승률:</strong> 0.0% (0/0) | 
+                    <strong>평균 수익률:</strong> +0.00% | 
+                    <strong>총 추적 건수:</strong> 100건
+                </div>
+            </div>
+            
+            <p style="margin: 1.5rem 0; color: #666;">
+                AI가 제안한 종목들의 48시간 후 실제 결과를 추적합니다. 
+                <span style="color: var(--success-color); font-weight: bold;">초록색</span>은 수익, 
+                <span style="color: var(--danger-color); font-weight: bold;">빨간색</span>은 손실을 의미합니다.
+            </p>
             
             <div style="overflow-x: auto;">
                 <table class="history-table">
                     <thead>
                         <tr>
-                            <th>날짜</th>
+                            <th>분석날짜</th>
                             <th>종목</th>
-                            <th>점수</th>
-                            <th>신뢰도</th>
-                            <th>하락확률</th>
-                            <th>리스크</th>
+                            <th>AI점수</th>
+                            <th>GO확률</th>
+                            <th>48h 결과</th>
+                            <th>상태</th>
                         </tr>
                     </thead>
                     <tbody>
                         
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-23 19:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/PIPPIN_USDT" target="_blank" class="symbol-link">PIPPINUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">54</td>
-                    <td style="font-size: 1.3rem;">54.0%</td>
-                    <td style="font-size: 1.3rem;">53.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-23 20:34</td>
+                    <td><a href="https://www.binance.com/en/futures/SUN_USDT" target="_blank" class="symbol-link">SUNUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">53</td>
+                    <td>52.8%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-23 15:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">47</td>
-                    <td style="font-size: 1.3rem;">47.0%</td>
-                    <td style="font-size: 1.3rem;">47.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-23 19:33</td>
+                    <td><a href="https://www.binance.com/en/futures/PIPPIN_USDT" target="_blank" class="symbol-link">PIPPINUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">54</td>
+                    <td>53.7%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-23 11:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HIPPO_USDT" target="_blank" class="symbol-link">HIPPOUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">59</td>
-                    <td style="font-size: 1.3rem;">59.0%</td>
-                    <td style="font-size: 1.3rem;">58.6%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>2025-09-23 15:03</td>
+                    <td><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">47</td>
+                    <td>47.1%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-23 07:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/SUN_USDT" target="_blank" class="symbol-link">SUNUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">51</td>
-                    <td style="font-size: 1.3rem;">51.0%</td>
-                    <td style="font-size: 1.3rem;">51.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>2025-09-23 11:02</td>
+                    <td><a href="https://www.binance.com/en/futures/HIPPO_USDT" target="_blank" class="symbol-link">HIPPOUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">59</td>
+                    <td>58.6%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-23 03:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/ME_USDT" target="_blank" class="symbol-link">MEUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">57</td>
-                    <td style="font-size: 1.3rem;">57.0%</td>
-                    <td style="font-size: 1.3rem;">56.6%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>2025-09-23 07:03</td>
+                    <td><a href="https://www.binance.com/en/futures/SUN_USDT" target="_blank" class="symbol-link">SUNUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">51</td>
+                    <td>51.4%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 23:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/ME_USDT" target="_blank" class="symbol-link">MEUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">57</td>
-                    <td style="font-size: 1.3rem;">57.0%</td>
-                    <td style="font-size: 1.3rem;">57.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>2025-09-23 03:03</td>
+                    <td><a href="https://www.binance.com/en/futures/ME_USDT" target="_blank" class="symbol-link">MEUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">57</td>
+                    <td>56.6%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 21:11</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">59</td>
-                    <td style="font-size: 1.3rem;">59.0%</td>
-                    <td style="font-size: 1.3rem;">58.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>2025-09-22 23:02</td>
+                    <td><a href="https://www.binance.com/en/futures/ME_USDT" target="_blank" class="symbol-link">MEUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">57</td>
+                    <td>57.4%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 21:04</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/PERP_USDT" target="_blank" class="symbol-link">PERPUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">60</td>
-                    <td style="font-size: 1.3rem;">60.0%</td>
-                    <td style="font-size: 1.3rem;">60.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 21:11</td>
+                    <td><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">59</td>
+                    <td>58.9%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 21:00</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HIPPO_USDT" target="_blank" class="symbol-link">HIPPOUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">76</td>
-                    <td style="font-size: 1.3rem;">76.0%</td>
-                    <td style="font-size: 1.3rem;">75.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 21:04</td>
+                    <td><a href="https://www.binance.com/en/futures/PERP_USDT" target="_blank" class="symbol-link">PERPUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">60</td>
+                    <td>60.2%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 20:59</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">89</td>
-                    <td style="font-size: 1.3rem;">89.0%</td>
-                    <td style="font-size: 1.3rem;">89.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 21:00</td>
+                    <td><a href="https://www.binance.com/en/futures/HIPPO_USDT" target="_blank" class="symbol-link">HIPPOUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">76</td>
+                    <td>75.7%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 20:40</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">88</td>
-                    <td style="font-size: 1.3rem;">88.0%</td>
-                    <td style="font-size: 1.3rem;">87.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 20:59</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">89</td>
+                    <td>89.0%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 20:34</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">88</td>
-                    <td style="font-size: 1.3rem;">88.0%</td>
-                    <td style="font-size: 1.3rem;">87.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 20:40</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">88</td>
+                    <td>87.9%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 20:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">88</td>
-                    <td style="font-size: 1.3rem;">88.0%</td>
-                    <td style="font-size: 1.3rem;">88.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 20:34</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">88</td>
+                    <td>87.7%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 20:30</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">89</td>
-                    <td style="font-size: 1.3rem;">89.0%</td>
-                    <td style="font-size: 1.3rem;">88.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 20:33</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">88</td>
+                    <td>88.1%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 20:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">94</td>
-                    <td style="font-size: 1.3rem;">94.0%</td>
-                    <td style="font-size: 1.3rem;">93.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 20:30</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">89</td>
+                    <td>88.9%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 19:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">94</td>
-                    <td style="font-size: 1.3rem;">94.0%</td>
-                    <td style="font-size: 1.3rem;">94.3%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 20:02</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">94</td>
+                    <td>93.5%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 19:24</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">94</td>
-                    <td style="font-size: 1.3rem;">94.0%</td>
-                    <td style="font-size: 1.3rem;">94.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 19:33</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">94</td>
+                    <td>94.3%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 19:11</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">93</td>
-                    <td style="font-size: 1.3rem;">93.0%</td>
-                    <td style="font-size: 1.3rem;">93.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 19:24</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">94</td>
+                    <td>94.1%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 19:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">94</td>
-                    <td style="font-size: 1.3rem;">94.0%</td>
-                    <td style="font-size: 1.3rem;">94.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 19:11</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">93</td>
+                    <td>93.4%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 18:46</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">93</td>
-                    <td style="font-size: 1.3rem;">93.0%</td>
-                    <td style="font-size: 1.3rem;">93.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 19:03</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">94</td>
+                    <td>94.0%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 18:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">91</td>
-                    <td style="font-size: 1.3rem;">91.0%</td>
-                    <td style="font-size: 1.3rem;">90.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 18:46</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">93</td>
+                    <td>93.0%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 18:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">87</td>
-                    <td style="font-size: 1.3rem;">87.0%</td>
-                    <td style="font-size: 1.3rem;">86.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 18:33</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">91</td>
+                    <td>90.5%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 17:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">85</td>
-                    <td style="font-size: 1.3rem;">85.0%</td>
-                    <td style="font-size: 1.3rem;">85.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 18:02</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">87</td>
+                    <td>86.9%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 17:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">91</td>
-                    <td style="font-size: 1.3rem;">91.0%</td>
-                    <td style="font-size: 1.3rem;">90.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 17:32</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">85</td>
+                    <td>85.4%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 16:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/AVNT_USDT" target="_blank" class="symbol-link">AVNTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">90</td>
-                    <td style="font-size: 1.3rem;">90.0%</td>
-                    <td style="font-size: 1.3rem;">89.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 17:03</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">91</td>
+                    <td>90.9%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 16:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/AVNT_USDT" target="_blank" class="symbol-link">AVNTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">94</td>
-                    <td style="font-size: 1.3rem;">94.0%</td>
-                    <td style="font-size: 1.3rem;">93.6%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 16:33</td>
+                    <td><a href="https://www.binance.com/en/futures/AVNT_USDT" target="_blank" class="symbol-link">AVNTUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">90</td>
+                    <td>89.8%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 15:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/THE_USDT" target="_blank" class="symbol-link">THEUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">83</td>
-                    <td style="font-size: 1.3rem;">83.0%</td>
-                    <td style="font-size: 1.3rem;">82.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 16:03</td>
+                    <td><a href="https://www.binance.com/en/futures/AVNT_USDT" target="_blank" class="symbol-link">AVNTUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">94</td>
+                    <td>93.6%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 15:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/AVNT_USDT" target="_blank" class="symbol-link">AVNTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">93</td>
-                    <td style="font-size: 1.3rem;">93.0%</td>
-                    <td style="font-size: 1.3rem;">92.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 15:33</td>
+                    <td><a href="https://www.binance.com/en/futures/THE_USDT" target="_blank" class="symbol-link">THEUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">83</td>
+                    <td>82.7%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 14:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/AVA_USDT" target="_blank" class="symbol-link">AVAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">56</td>
-                    <td style="font-size: 1.3rem;">56.0%</td>
-                    <td style="font-size: 1.3rem;">56.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 15:03</td>
+                    <td><a href="https://www.binance.com/en/futures/AVNT_USDT" target="_blank" class="symbol-link">AVNTUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">93</td>
+                    <td>92.8%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 14:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/AVA_USDT" target="_blank" class="symbol-link">AVAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">54</td>
-                    <td style="font-size: 1.3rem;">54.0%</td>
-                    <td style="font-size: 1.3rem;">54.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 14:33</td>
+                    <td><a href="https://www.binance.com/en/futures/AVA_USDT" target="_blank" class="symbol-link">AVAUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">56</td>
+                    <td>56.2%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 13:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BABY_USDT" target="_blank" class="symbol-link">BABYUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">52</td>
-                    <td style="font-size: 1.3rem;">52.0%</td>
-                    <td style="font-size: 1.3rem;">52.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 14:03</td>
+                    <td><a href="https://www.binance.com/en/futures/AVA_USDT" target="_blank" class="symbol-link">AVAUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">54</td>
+                    <td>54.4%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 13:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BABY_USDT" target="_blank" class="symbol-link">BABYUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">56</td>
-                    <td style="font-size: 1.3rem;">56.0%</td>
-                    <td style="font-size: 1.3rem;">56.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 13:32</td>
+                    <td><a href="https://www.binance.com/en/futures/BABY_USDT" target="_blank" class="symbol-link">BABYUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">52</td>
+                    <td>52.1%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 12:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">87</td>
-                    <td style="font-size: 1.3rem;">87.0%</td>
-                    <td style="font-size: 1.3rem;">87.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 13:03</td>
+                    <td><a href="https://www.binance.com/en/futures/BABY_USDT" target="_blank" class="symbol-link">BABYUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">56</td>
+                    <td>56.5%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 12:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">90</td>
-                    <td style="font-size: 1.3rem;">90.0%</td>
-                    <td style="font-size: 1.3rem;">90.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 12:33</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">87</td>
+                    <td>87.1%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 11:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">90</td>
-                    <td style="font-size: 1.3rem;">90.0%</td>
-                    <td style="font-size: 1.3rem;">90.3%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 12:03</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">90</td>
+                    <td>90.5%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 11:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">88</td>
-                    <td style="font-size: 1.3rem;">88.0%</td>
-                    <td style="font-size: 1.3rem;">87.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 11:33</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">90</td>
+                    <td>90.3%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 10:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">89</td>
-                    <td style="font-size: 1.3rem;">89.0%</td>
-                    <td style="font-size: 1.3rem;">88.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 11:03</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">88</td>
+                    <td>87.7%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 10:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">86</td>
-                    <td style="font-size: 1.3rem;">86.0%</td>
-                    <td style="font-size: 1.3rem;">86.3%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 10:33</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">89</td>
+                    <td>88.7%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 09:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">87</td>
-                    <td style="font-size: 1.3rem;">87.0%</td>
-                    <td style="font-size: 1.3rem;">86.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 10:03</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">86</td>
+                    <td>86.3%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 09:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">77</td>
-                    <td style="font-size: 1.3rem;">77.0%</td>
-                    <td style="font-size: 1.3rem;">77.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-low">LOW</span></td>
+                    <td>2025-09-22 09:33</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">87</td>
+                    <td>86.8%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 08:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">86</td>
-                    <td style="font-size: 1.3rem;">86.0%</td>
-                    <td style="font-size: 1.3rem;">85.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 09:03</td>
+                    <td><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">77</td>
+                    <td>77.2%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 08:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">88</td>
-                    <td style="font-size: 1.3rem;">88.0%</td>
-                    <td style="font-size: 1.3rem;">88.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 08:33</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">86</td>
+                    <td>85.8%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 07:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">85</td>
-                    <td style="font-size: 1.3rem;">85.0%</td>
-                    <td style="font-size: 1.3rem;">84.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 08:02</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">88</td>
+                    <td>88.4%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 07:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">83</td>
-                    <td style="font-size: 1.3rem;">83.0%</td>
-                    <td style="font-size: 1.3rem;">83.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 07:32</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">85</td>
+                    <td>84.8%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 06:44</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">90</td>
-                    <td style="font-size: 1.3rem;">90.0%</td>
-                    <td style="font-size: 1.3rem;">90.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 07:03</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">83</td>
+                    <td>83.5%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 06:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">91</td>
-                    <td style="font-size: 1.3rem;">91.0%</td>
-                    <td style="font-size: 1.3rem;">90.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 06:44</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">90</td>
+                    <td>90.4%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 05:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">56</td>
-                    <td style="font-size: 1.3rem;">56.0%</td>
-                    <td style="font-size: 1.3rem;">56.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>2025-09-22 06:03</td>
+                    <td><a href="https://www.binance.com/en/futures/HEMI_USDT" target="_blank" class="symbol-link">HEMIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">91</td>
+                    <td>90.5%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 05:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/ID_USDT" target="_blank" class="symbol-link">IDUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">67</td>
-                    <td style="font-size: 1.3rem;">67.0%</td>
-                    <td style="font-size: 1.3rem;">67.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 05:33</td>
+                    <td><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">56</td>
+                    <td>56.2%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 04:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/PUMP_USDT" target="_blank" class="symbol-link">PUMPUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">61</td>
-                    <td style="font-size: 1.3rem;">61.0%</td>
-                    <td style="font-size: 1.3rem;">61.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>2025-09-22 05:02</td>
+                    <td><a href="https://www.binance.com/en/futures/ID_USDT" target="_blank" class="symbol-link">IDUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">67</td>
+                    <td>67.2%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 04:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/PUMP_USDT" target="_blank" class="symbol-link">PUMPUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">57</td>
-                    <td style="font-size: 1.3rem;">57.0%</td>
-                    <td style="font-size: 1.3rem;">56.6%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 03:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">62</td>
-                    <td style="font-size: 1.3rem;">62.0%</td>
-                    <td style="font-size: 1.3rem;">61.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 03:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">68</td>
-                    <td style="font-size: 1.3rem;">68.0%</td>
-                    <td style="font-size: 1.3rem;">67.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 02:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/PUMP_USDT" target="_blank" class="symbol-link">PUMPUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">56</td>
-                    <td style="font-size: 1.3rem;">56.0%</td>
-                    <td style="font-size: 1.3rem;">56.3%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 02:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">58</td>
-                    <td style="font-size: 1.3rem;">58.0%</td>
-                    <td style="font-size: 1.3rem;">58.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 01:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BAN_USDT" target="_blank" class="symbol-link">BANUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">57</td>
-                    <td style="font-size: 1.3rem;">57.0%</td>
-                    <td style="font-size: 1.3rem;">57.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 01:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">67</td>
-                    <td style="font-size: 1.3rem;">67.0%</td>
-                    <td style="font-size: 1.3rem;">67.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 00:49</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">54</td>
-                    <td style="font-size: 1.3rem;">54.0%</td>
-                    <td style="font-size: 1.3rem;">53.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 00:42</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">55</td>
-                    <td style="font-size: 1.3rem;">55.0%</td>
-                    <td style="font-size: 1.3rem;">55.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 00:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">40</td>
-                    <td style="font-size: 1.3rem;">46.0%</td>
-                    <td style="font-size: 1.3rem;">54.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 00:09</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/MUBARAK_USDT" target="_blank" class="symbol-link">MUBARAKUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">41</td>
-                    <td style="font-size: 1.3rem;">47.0%</td>
-                    <td style="font-size: 1.3rem;">58.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-22 00:05</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/MUBARAK_USDT" target="_blank" class="symbol-link">MUBARAKUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">41</td>
-                    <td style="font-size: 1.3rem;">47.0%</td>
-                    <td style="font-size: 1.3rem;">57.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 23:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/MUBARAK_USDT" target="_blank" class="symbol-link">MUBARAKUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">41</td>
-                    <td style="font-size: 1.3rem;">47.0%</td>
-                    <td style="font-size: 1.3rem;">58.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 23:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">37</td>
-                    <td style="font-size: 1.3rem;">43.0%</td>
-                    <td style="font-size: 1.3rem;">62.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 22:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">40</td>
-                    <td style="font-size: 1.3rem;">46.0%</td>
-                    <td style="font-size: 1.3rem;">54.3%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 22:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">40</td>
-                    <td style="font-size: 1.3rem;">46.0%</td>
-                    <td style="font-size: 1.3rem;">55.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 21:40</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BAN_USDT" target="_blank" class="symbol-link">BANUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">35</td>
-                    <td style="font-size: 1.3rem;">41.0%</td>
-                    <td style="font-size: 1.3rem;">56.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 21:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BAN_USDT" target="_blank" class="symbol-link">BANUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">35</td>
-                    <td style="font-size: 1.3rem;">41.0%</td>
-                    <td style="font-size: 1.3rem;">56.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 21:30</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/AEVO_USDT" target="_blank" class="symbol-link">AEVOUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">39</td>
-                    <td style="font-size: 1.3rem;">45.0%</td>
-                    <td style="font-size: 1.3rem;">44.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 21:07</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HOOK_USDT" target="_blank" class="symbol-link">HOOKUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">38</td>
-                    <td style="font-size: 1.3rem;">44.0%</td>
-                    <td style="font-size: 1.3rem;">49.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 21:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/HOOK_USDT" target="_blank" class="symbol-link">HOOKUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">38</td>
-                    <td style="font-size: 1.3rem;">44.0%</td>
-                    <td style="font-size: 1.3rem;">49.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 20:58</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">33</td>
-                    <td style="font-size: 1.3rem;">39.0%</td>
-                    <td style="font-size: 1.3rem;">52.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 20:56</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">33</td>
-                    <td style="font-size: 1.3rem;">39.0%</td>
-                    <td style="font-size: 1.3rem;">53.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 20:51</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">33</td>
-                    <td style="font-size: 1.3rem;">39.0%</td>
-                    <td style="font-size: 1.3rem;">52.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 20:34</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BAS_USDT" target="_blank" class="symbol-link">BASUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">33</td>
-                    <td style="font-size: 1.3rem;">39.0%</td>
-                    <td style="font-size: 1.3rem;">51.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 20:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">33</td>
-                    <td style="font-size: 1.3rem;">39.0%</td>
-                    <td style="font-size: 1.3rem;">53.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 19:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">33</td>
-                    <td style="font-size: 1.3rem;">39.0%</td>
-                    <td style="font-size: 1.3rem;">53.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 19:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BAN_USDT" target="_blank" class="symbol-link">BANUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">39</td>
-                    <td style="font-size: 1.3rem;">45.0%</td>
-                    <td style="font-size: 1.3rem;">66.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 18:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BAN_USDT" target="_blank" class="symbol-link">BANUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">33</td>
-                    <td style="font-size: 1.3rem;">39.0%</td>
-                    <td style="font-size: 1.3rem;">51.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 18:05</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">35</td>
-                    <td style="font-size: 1.3rem;">41.0%</td>
-                    <td style="font-size: 1.3rem;">41.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 17:52</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPIN_USDT" target="_blank" class="symbol-link">XPINUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">41</td>
-                    <td style="font-size: 1.3rem;">47.0%</td>
-                    <td style="font-size: 1.3rem;">58.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 17:39</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">34</td>
-                    <td style="font-size: 1.3rem;">42.0%</td>
-                    <td style="font-size: 1.3rem;">40.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 17:37</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">34</td>
-                    <td style="font-size: 1.3rem;">42.0%</td>
-                    <td style="font-size: 1.3rem;">40.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 17:35</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/KOMA_USDT" target="_blank" class="symbol-link">KOMAUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">34</td>
-                    <td style="font-size: 1.3rem;">42.0%</td>
-                    <td style="font-size: 1.3rem;">40.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 17:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/BAN_USDT" target="_blank" class="symbol-link">BANUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">40</td>
-                    <td style="font-size: 1.3rem;">46.0%</td>
-                    <td style="font-size: 1.3rem;">69.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 16:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">40</td>
-                    <td style="font-size: 1.3rem;">46.0%</td>
-                    <td style="font-size: 1.3rem;">46.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 16:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">36</td>
-                    <td style="font-size: 1.3rem;">48.0%</td>
-                    <td style="font-size: 1.3rem;">36.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 15:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">40</td>
-                    <td style="font-size: 1.3rem;">46.0%</td>
-                    <td style="font-size: 1.3rem;">47.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 15:02</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">45</td>
-                    <td style="font-size: 1.3rem;">51.0%</td>
-                    <td style="font-size: 1.3rem;">66.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 14:24</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">41</td>
-                    <td style="font-size: 1.3rem;">47.0%</td>
-                    <td style="font-size: 1.3rem;">50.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 14:05</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">42</td>
-                    <td style="font-size: 1.3rem;">48.0%</td>
-                    <td style="font-size: 1.3rem;">60.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 13:04</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/XPL_USDT" target="_blank" class="symbol-link">XPLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">44</td>
-                    <td style="font-size: 1.3rem;">50.0%</td>
-                    <td style="font-size: 1.3rem;">56.7%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 12:32</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">55</td>
-                    <td style="font-size: 1.3rem;">61.0%</td>
-                    <td style="font-size: 1.3rem;">84.3%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 12:03</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">54</td>
-                    <td style="font-size: 1.3rem;">60.0%</td>
-                    <td style="font-size: 1.3rem;">82.1%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 11:33</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">53</td>
-                    <td style="font-size: 1.3rem;">59.0%</td>
-                    <td style="font-size: 1.3rem;">80.4%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 11:18</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TWT_USDT" target="_blank" class="symbol-link">TWTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">53</td>
-                    <td style="font-size: 1.3rem;">59.0%</td>
-                    <td style="font-size: 1.3rem;">80.8%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-medium">MEDIUM</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 05:45</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/STBL_USDT" target="_blank" class="symbol-link">STBLUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">54</td>
-                    <td style="font-size: 1.3rem;">60.0%</td>
-                    <td style="font-size: 1.3rem;">83.5%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 00:36</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">44</td>
-                    <td style="font-size: 1.3rem;">50.0%</td>
-                    <td style="font-size: 1.3rem;">64.2%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 00:31</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">44</td>
-                    <td style="font-size: 1.3rem;">50.0%</td>
-                    <td style="font-size: 1.3rem;">64.0%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 00:31</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">44</td>
-                    <td style="font-size: 1.3rem;">50.0%</td>
-                    <td style="font-size: 1.3rem;">63.9%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
-                </tr>
-            
-                <tr>
-                    <td style="font-size: 1.3rem;">2025-09-21 00:28</td>
-                    <td style="font-size: 1.3rem;"><a href="https://www.binance.com/en/futures/TUT_USDT" target="_blank" class="symbol-link">TUTUSDT</a></td>
-                    <td style="font-weight: bold; font-size: 1.3rem; color: var(--accent-color);">43</td>
-                    <td style="font-size: 1.3rem;">49.0%</td>
-                    <td style="font-size: 1.3rem;">62.6%</td>
-                    <td style="font-size: 1.3rem;"><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>2025-09-22 04:32</td>
+                    <td><a href="https://www.binance.com/en/futures/PUMP_USDT" target="_blank" class="symbol-link">PUMPUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">61</td>
+                    <td>61.0%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                     </tbody>
@@ -1505,33 +1018,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // 차트 전체화면 토글 함수
-        function toggleFullscreen() {
-            const container = document.getElementById('chart-container');
-            const btn = document.getElementById('fullscreen-btn');
-            
-            if (container.classList.contains('fullscreen')) {
-                container.classList.remove('fullscreen');
-                btn.textContent = '🔍 전체화면';
-            } else {
-                container.classList.add('fullscreen');
-                btn.textContent = '❌ 닫기';
-            }
-        }
-
-        // ESC 키로 전체화면 종료
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const container = document.getElementById('chart-container');
-                const btn = document.getElementById('fullscreen-btn');
-                if (container.classList.contains('fullscreen')) {
-                    container.classList.remove('fullscreen');
-                    btn.textContent = '🔍 전체화면';
-                }
-            }
-        });
-    </script>
 </body>
 </html>
