@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>암호화폐 분석 결과</title>
     <script src="https://s3.tradingview.com/tv.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         :root {
             --primary-color: #1a1a2e;
@@ -372,6 +373,51 @@
             font-size: 1.6rem;
         }
 
+        .chart-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .chart-canvas {
+            max-height: 400px;
+            margin-top: 1rem;
+        }
+
+        .chart-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .chart-stat {
+            text-align: center;
+        }
+
+        .chart-stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .chart-stat-label {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .positive {
+            color: var(--success-color);
+        }
+
+        .negative {
+            color: var(--danger-color);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
@@ -416,7 +462,7 @@
         <!-- 헤더 -->
         <div class="header">
             <h1>🧠 AI 코인선물 숏포지션 종목 분석</h1>
-            <div class="subtitle">신경망 기반 분석 • 2025-10-02 18:12:02</div>
+            <div class="subtitle">신경망 기반 분석 • 2025-10-02 22:12:00</div>
         </div>
 
         <!-- 개선된 네비게이션 -->
@@ -435,23 +481,23 @@
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-value">SOMIUSDT</div>
+                    <div class="stat-value">COAIUSDT</div>
                     <div class="stat-label">종목명</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">30</div>
+                    <div class="stat-value">42</div>
                     <div class="stat-label">최종 점수</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">46.0%</div>
+                    <div class="stat-value">42.0%</div>
                     <div class="stat-label">신뢰도</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">29.6%</div>
+                    <div class="stat-value">42.5%</div>
                     <div class="stat-label">GO 확률</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$0.876800</div>
+                    <div class="stat-value">$0.341420</div>
                     <div class="stat-label">현재가</div>
                 </div>
                 <div class="stat-card">
@@ -474,9 +520,9 @@
         
         <div class="chart-section" id="chartSection">
             <div class="chart-header">
-                <h2 class="section-title">📈 SOMIUSDT 실시간 차트 (4시간봉)</h2>
+                <h2 class="section-title">📈 COAIUSDT 실시간 차트 (4시간봉)</h2>
                 <div class="chart-controls">
-                    <a href="https://www.binance.com/en/futures/SOMI_USDT" target="_blank" class="chart-btn binance-btn">
+                    <a href="https://www.binance.com/en/futures/COAI_USDT" target="_blank" class="chart-btn binance-btn">
                         🏦 바이낸스에서 보기
                     </a>
                 </div>
@@ -491,7 +537,7 @@
             new TradingView.widget({
                 "width": "100%",
                 "height": 800,
-                "symbol": "BINANCE:SOMIUSDT",
+                "symbol": "BINANCE:COAIUSDT",
                 "interval": "240",
                 "timezone": "Asia/Seoul",
                 "theme": "dark",
@@ -520,9 +566,36 @@
             <div class="tracking-info">
                 <div class="tracking-info-title">📊 추적 성과 요약 (완료된 거래 기준)</div>
                 <div class="tracking-info-text">
-                    <strong>승률:</strong> 65.9% (29/44) | 
-                    <strong>누적 수익률:</strong> +181.18% | 
-                    <strong>총 추적 건수:</strong> 51건
+                    <strong>승률:</strong> 67.4% (31/46) | 
+                    <strong>누적 수익률:</strong> <span class="positive">+204.32%</span> | 
+                    <strong>총 추적 건수:</strong> 52건
+                </div>
+            </div>
+            
+            <!-- 누적 수익률 그래프 -->
+            <div class="chart-wrapper">
+                <h3 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">📈 누적 수익률 추이</h3>
+                <div class="chart-canvas">
+                    <canvas id="cumulativeReturnChart"></canvas>
+                </div>
+                
+                <div class="chart-stats">
+                    <div class="chart-stat">
+                        <div class="chart-stat-value positive">+10.98%</div>
+                        <div class="chart-stat-label">평균 수익</div>
+                    </div>
+                    <div class="chart-stat">
+                        <div class="chart-stat-value negative">-9.08%</div>
+                        <div class="chart-stat-label">평균 손실</div>
+                    </div>
+                    <div class="chart-stat">
+                        <div class="chart-stat-value positive">+23.21%</div>
+                        <div class="chart-stat-label">최대 수익</div>
+                    </div>
+                    <div class="chart-stat">
+                        <div class="chart-stat-value negative">-27.58%</div>
+                        <div class="chart-stat-label">최대 손실</div>
+                    </div>
                 </div>
             </div>
             
@@ -546,6 +619,15 @@
                     </thead>
                     <tbody>
                         
+                <tr style="font-size: 1.3rem;">
+                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-02 (목) 22:12</td>
+                    <td><a href="https://www.binance.com/en/futures/COAI_USDT" target="_blank" class="symbol-link">COAIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">42</td>
+                    <td style="font-weight: bold; color: var(--accent-color);">42.5%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
+                </tr>
+            
                 <tr style="font-size: 1.3rem;">
                     <td style="font-weight: bold; color: var(--accent-color);">2025-10-02 (목) 18:12</td>
                     <td><a href="https://www.binance.com/en/futures/SOMI_USDT" target="_blank" class="symbol-link">SOMIUSDT</a></td>
@@ -596,8 +678,8 @@
                     <td><a href="https://www.binance.com/en/futures/SQD_USDT" target="_blank" class="symbol-link">SQDUSDT</a></td>
                     <td style="font-weight: bold; color: var(--accent-color);">40</td>
                     <td style="font-weight: bold; color: var(--accent-color);">39.6%</td>
-                    <td><div class="tracking-result tracking-pending">대기중</div></td>
-                    <td><span class="risk-badge risk-medium">대기</span></td>
+                    <td><div class="tracking-result tracking-profit">+22.87%</div></td>
+                    <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
             
                 <tr style="font-size: 1.3rem;">
@@ -605,8 +687,8 @@
                     <td><a href="https://www.binance.com/en/futures/BTCDOM_USDT" target="_blank" class="symbol-link">BTCDOMUSDT</a></td>
                     <td style="font-weight: bold; color: var(--accent-color);">4</td>
                     <td style="font-weight: bold; color: var(--accent-color);">4.5%</td>
-                    <td><div class="tracking-result tracking-pending">대기중</div></td>
-                    <td><span class="risk-badge risk-medium">대기</span></td>
+                    <td><div class="tracking-result tracking-profit">+0.27%</div></td>
+                    <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
             
                 <tr style="font-size: 1.3rem;">
@@ -1009,6 +1091,98 @@
                 </table>
             </div>
         </div>
+        
+        <script>
+            
+        // 누적 수익률 차트
+        const ctx = document.getElementById('cumulativeReturnChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["2025-09-23", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-30", "2025-09-30", "2025-09-30", "2025-10-01", "2025-10-01", "2025-10-01", "2025-10-01", "2025-10-01", "2025-10-01"],
+                    datasets: [{
+                        label: '누적 수익률 (%)',
+                        data: [8.97, 10.23, 8.7, 15.82, 33.66, 55.5, 68.54, 80.74, 103.34, 108.69, 128.04, 143.11, 154.98, 147.44, 142.11, 147.59, 120.01, 123.56, 119.65, 115.8, 139.01, 161.43, 176.89, 186.01, 189.25, 178.27, 180.88, 183.87, 198.03, 209.72, 199.94, 199.42, 206.13, 184.6, 179.42, 201.95, 207.72, 206.08, 208.41, 214.1, 210.41, 188.77, 192.65, 181.18, 181.45, 204.32],
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: '#28a745',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            padding: 12,
+                            titleFont: {
+                                size: 14
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            callbacks: {
+                                label: function(context) {
+                                    return '누적 수익률: ' + context.parsed.y.toFixed(2) + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toFixed(1) + '%';
+                                },
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        </script>
         
 
         <!-- 위험 경고 메시지 -->
