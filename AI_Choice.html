@@ -7,6 +7,7 @@
     <title>암호화폐 분석 결과</title>
     <script src="https://s3.tradingview.com/tv.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
         :root {
             --primary-color: #1a1a2e;
@@ -462,7 +463,7 @@
         <!-- 헤더 -->
         <div class="header">
             <h1>🧠 AI 코인선물 숏포지션 종목 분석</h1>
-            <div class="subtitle">신경망 기반 분석 • 2025-10-02 22:12:00</div>
+            <div class="subtitle">신경망 기반 분석 • 2025-10-03 02:12:00</div>
         </div>
 
         <!-- 개선된 네비게이션 -->
@@ -493,11 +494,11 @@
                     <div class="stat-label">신뢰도</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">42.5%</div>
+                    <div class="stat-value">41.6%</div>
                     <div class="stat-label">GO 확률</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$0.341420</div>
+                    <div class="stat-value">$0.300160</div>
                     <div class="stat-label">현재가</div>
                 </div>
                 <div class="stat-card">
@@ -566,22 +567,20 @@
             <div class="tracking-info">
                 <div class="tracking-info-title">📊 추적 성과 요약 (완료된 거래 기준)</div>
                 <div class="tracking-info-text">
-                    <strong>승률:</strong> 67.4% (31/46) | 
-                    <strong>누적 수익률:</strong> <span class="positive">+204.32%</span> | 
-                    <strong>총 추적 건수:</strong> 52건
+                    <strong>승률:</strong> 68.1% (32/47) | 
+                    <strong>누적 수익률:</strong> <span class="positive">+204.89%</span> | 
+                    <strong>총 추적 건수:</strong> 53건
                 </div>
             </div>
             
             <!-- 누적 수익률 그래프 -->
             <div class="chart-wrapper">
                 <h3 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">📈 누적 수익률 추이</h3>
-                <div class="chart-canvas">
-                    <canvas id="cumulativeReturnChart"></canvas>
-                </div>
+                <div id="cumulativeReturnChart" style="width: 100%; height: 500px;"></div>
                 
                 <div class="chart-stats">
                     <div class="chart-stat">
-                        <div class="chart-stat-value positive">+10.98%</div>
+                        <div class="chart-stat-value positive">+10.66%</div>
                         <div class="chart-stat-label">평균 수익</div>
                     </div>
                     <div class="chart-stat">
@@ -619,6 +618,15 @@
                     </thead>
                     <tbody>
                         
+                <tr style="font-size: 1.3rem;">
+                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-03 (금) 02:12</td>
+                    <td><a href="https://www.binance.com/en/futures/COAI_USDT" target="_blank" class="symbol-link">COAIUSDT</a></td>
+                    <td style="font-weight: bold; color: var(--accent-color);">42</td>
+                    <td style="font-weight: bold; color: var(--accent-color);">41.6%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
+                </tr>
+            
                 <tr style="font-size: 1.3rem;">
                     <td style="font-weight: bold; color: var(--accent-color);">2025-10-02 (목) 22:12</td>
                     <td><a href="https://www.binance.com/en/futures/COAI_USDT" target="_blank" class="symbol-link">COAIUSDT</a></td>
@@ -669,8 +677,8 @@
                     <td><a href="https://www.binance.com/en/futures/M_USDT" target="_blank" class="symbol-link">MUSDT</a></td>
                     <td style="font-weight: bold; color: var(--accent-color);">37</td>
                     <td style="font-weight: bold; color: var(--accent-color);">37.3%</td>
-                    <td><div class="tracking-result tracking-pending">대기중</div></td>
-                    <td><span class="risk-badge risk-medium">대기</span></td>
+                    <td><div class="tracking-result tracking-profit">+0.57%</div></td>
+                    <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
             
                 <tr style="font-size: 1.3rem;">
@@ -1094,93 +1102,111 @@
         
         <script>
             
-        // 누적 수익률 차트
-        const ctx = document.getElementById('cumulativeReturnChart');
-        if (ctx) {
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["2025-09-23", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-24", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-25", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-26", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-27", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-28", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-29", "2025-09-30", "2025-09-30", "2025-09-30", "2025-10-01", "2025-10-01", "2025-10-01", "2025-10-01", "2025-10-01", "2025-10-01"],
-                    datasets: [{
-                        label: '누적 수익률 (%)',
-                        data: [8.97, 10.23, 8.7, 15.82, 33.66, 55.5, 68.54, 80.74, 103.34, 108.69, 128.04, 143.11, 154.98, 147.44, 142.11, 147.59, 120.01, 123.56, 119.65, 115.8, 139.01, 161.43, 176.89, 186.01, 189.25, 178.27, 180.88, 183.87, 198.03, 209.72, 199.94, 199.42, 206.13, 184.6, 179.42, 201.95, 207.72, 206.08, 208.41, 214.1, 210.41, 188.77, 192.65, 181.18, 181.45, 204.32],
-                        borderColor: '#28a745',
-                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
-                        borderWidth: 3,
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 4,
-                        pointHoverRadius: 6,
-                        pointBackgroundColor: '#28a745',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: {
-                        intersect: false,
-                        mode: 'index'
-                    },
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            labels: {
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                }
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                            padding: 12,
-                            titleFont: {
-                                size: 14
-                            },
-                            bodyFont: {
-                                size: 13
-                            },
-                            callbacks: {
-                                label: function(context) {
-                                    return '누적 수익률: ' + context.parsed.y.toFixed(2) + '%';
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            },
-                            ticks: {
-                                callback: function(value) {
-                                    return value.toFixed(1) + '%';
-                                },
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                maxRotation: 45,
-                                minRotation: 45,
-                                font: {
-                                    size: 11
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
+        // Plotly.js 캔들스틱 차트
+        const dates = ["2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-27", "2025-09-28", "2025-09-29", "2025-09-30", "2025-10-01", "2025-10-02"];
+        const opens = [0, 8.97, 68.54, 154.98, 119.65, 189.25, 199.94, 207.72, 214.1, 204.32];
+        const highs = [8.97, 68.54, 154.98, 154.98, 189.25, 209.72, 207.72, 214.1, 214.1, 204.89];
+        const lows = [0, 8.7, 68.54, 119.65, 115.8, 178.27, 179.42, 206.08, 181.18, 204.32];
+        const closes = [8.97, 68.54, 154.98, 119.65, 189.25, 199.94, 207.72, 214.1, 204.32, 204.89];
+        
+        // 캔들스틱 트레이스
+        const candlestick = {
+            type: 'candlestick',
+            x: dates,
+            open: opens,
+            high: highs,
+            low: lows,
+            close: closes,
+            increasing: {
+                line: { color: '#26a69a', width: 2 },
+                fillcolor: '#26a69a'
+            },
+            decreasing: {
+                line: { color: '#ef5350', width: 2 },
+                fillcolor: '#ef5350'
+            },
+            name: '일별 누적 수익률',
+            xaxis: 'x',
+            yaxis: 'y',
+            hoverinfo: 'x+y'
+        };
+        
+        // 누적 라인 트레이스 (옵션)
+        const line = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            x: dates,
+            y: closes,
+            line: {
+                color: 'rgba(102, 126, 234, 0.6)',
+                width: 2,
+                dash: 'dot'
+            },
+            marker: {
+                size: 6,
+                color: 'rgba(102, 126, 234, 0.8)'
+            },
+            name: '누적 라인',
+            yaxis: 'y',
+            hoverinfo: 'skip'
+        };
+        
+        const data = [candlestick, line];
+        
+        const layout = {
+            title: {
+                text: '누적 수익률 일봉 차트',
+                font: { size: 18, weight: 'bold' }
+            },
+            xaxis: {
+                title: '날짜',
+                rangeslider: { visible: false },
+                type: 'date',
+                tickangle: -45,
+                tickfont: { size: 11 }
+            },
+            yaxis: {
+                title: '누적 수익률 (%)',
+                ticksuffix: '%',
+                zeroline: true,
+                zerolinecolor: '#999',
+                zerolinewidth: 2,
+                gridcolor: 'rgba(0, 0, 0, 0.05)'
+            },
+            plot_bgcolor: '#fafafa',
+            paper_bgcolor: 'white',
+            hovermode: 'x unified',
+            showlegend: true,
+            legend: {
+                orientation: 'h',
+                yanchor: 'bottom',
+                y: 1.02,
+                xanchor: 'right',
+                x: 1
+            },
+            margin: {
+                l: 60,
+                r: 40,
+                t: 80,
+                b: 80
+            },
+            height: 500
+        };
+        
+        const config = {
+            responsive: true,
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            toImageButtonOptions: {
+                format: 'png',
+                filename: 'cumulative_return_chart',
+                height: 800,
+                width: 1400
+            }
+        };
+        
+        Plotly.newPlot('cumulativeReturnChart', data, config, layout);
         
         </script>
         
