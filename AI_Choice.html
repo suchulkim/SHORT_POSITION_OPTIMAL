@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>암호화폐 분석 결과 (최고/최저 수익률 + 손절 시스템)</title>
+    <title>암호화폐 패턴 최적화 분석 결과</title>
     <script src="https://s3.tradingview.com/tv.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
         :root {
@@ -291,7 +290,6 @@
             border: 1px solid #f5c6cb;
         }
 
-        /* 추적 결과 스타일 - 개선됨 */
         .tracking-result {
             padding: 0.5rem 1rem;
             border-radius: 8px;
@@ -331,7 +329,6 @@
             border: 2px solid #adb5bd;
         }
 
-        /* 최고/최저 수익률 표시 */
         .return-stats {
             font-size: 1.1rem;
             margin-top: 0.3rem;
@@ -397,43 +394,6 @@
             font-size: 1.4rem;
         }
 
-        .chart-wrapper {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        }
-
-        .chart-canvas {
-            max-height: 400px;
-            margin-top: 1rem;
-        }
-
-        .chart-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--border-color);
-        }
-
-        .chart-stat {
-            text-align: center;
-        }
-
-        .chart-stat-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-
-        .chart-stat-label {
-            font-size: 1.2rem;
-            color: #666;
-        }
-
         .positive {
             color: var(--success-color);
         }
@@ -483,13 +443,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- 헤더 -->
         <div class="header">
-            <h1>🧠 AI 코인선물 숏포지션 종목 분석</h1>
-            <div class="subtitle">신경망 기반 분석 • 최고/최저 수익률 추적 • -18% 손절 시스템 • 2025-10-10 16:02:15</div>
+            <h1>🧠 AI 패턴 최적화 숏포지션 분석</h1>
+            <div class="subtitle">양봉-음봉-음봉 / 음봉-음봉-음봉 패턴 전문 • -18% 손절 시스템 • 2025-10-10 20:52:35</div>
         </div>
 
-        <!-- 개선된 네비게이션 -->
         <div class="nav-menu">
             <div class="nav-links">
                 <a href="dashboard.html" class="nav-link dashboard">📊 코인선물 종합 지수</a>
@@ -498,56 +456,18 @@
             </div>
         </div>
 
-        <!-- 최고 점수 종목 분석 -->
         
-        <div class="analysis-summary">
-            <h2 class="section-title">📈 AI 숏포지션 최고점수 평가 종목</h2>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">BANKUSDT</div>
-                    <div class="stat-label">종목명</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">35</div>
-                    <div class="stat-label">최종 점수</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">44.0%</div>
-                    <div class="stat-label">신뢰도</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">34.9%</div>
-                    <div class="stat-label">GO 확률</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">$0.131080</div>
-                    <div class="stat-label">현재가</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value risk-badge risk-high">HIGH</div>
-                    <div class="stat-label">리스크</div>
-                </div>
+            <div class="analysis-summary">
+                <h2 class="section-title">📈 분석 대상 종목</h2>
+                <p>분석할 수 있는 종목이 없습니다.</p>
             </div>
             
-            <div class="tracking-info">
-                <div class="tracking-info-title">📊 24시간 성과 추적 시스템 (개선됨)</div>
-                <div class="tracking-info-text">
-                    • 24시간 동안 최고 수익률과 최대 손실률을 실시간 추적합니다.<br>
-                    • <strong>-18% 손절 시스템:</strong> 손실이 -18%에 도달하면 자동으로 손절 기록됩니다.<br>
-                    • 추적 결과는 아래 히스토리 테이블에서 확인할 수 있습니다.
-                </div>
-            </div>
-        </div>
-        
-
-        <!-- 개선된 실시간 차트 -->
         
         <div class="chart-section" id="chartSection">
             <div class="chart-header">
-                <h2 class="section-title">📈 BANKUSDT 실시간 차트 (4시간봉)</h2>
+                <h2 class="section-title">📈 BTCUSDT 실시간 차트 (4시간봉)</h2>
                 <div class="chart-controls">
-                    <a href="https://www.binance.com/en/futures/BANK_USDT" target="_blank" class="chart-btn binance-btn">
+                    <a href="https://www.binance.com/en/futures/BTC_USDT" target="_blank" class="chart-btn binance-btn">
                         🏦 바이낸스에서 보기
                     </a>
                 </div>
@@ -558,11 +478,10 @@
         </div>
         
         <script>
-            // TradingView 위젯 생성
             new TradingView.widget({
                 "width": "100%",
                 "height": 800,
-                "symbol": "BINANCE:BANKUSDT",
+                "symbol": "BINANCE:BTCUSDT",
                 "interval": "240",
                 "timezone": "Asia/Seoul",
                 "theme": "dark",
@@ -582,14 +501,12 @@
             });
         </script>
         
-
-        <!-- 24시간 추적 히스토리 (최고/최저 + 손절) -->
         
         <div class="history-section">
-            <h2 class="section-title">📋 AI 숏포지션 최고점수 평가 종목 24시간 성과 추적 (최고/최저 + 손절)</h2>
+            <h2 class="section-title">📋 패턴 최적화 AI 24시간 성과 추적</h2>
             
             <div class="tracking-info">
-                <div class="tracking-info-title">📊 추적 성과 요약 (완료된 거래 기준)</div>
+                <div class="tracking-info-title">📊 추적 성과 요약</div>
                 <div class="tracking-info-text">
                     <strong>승률:</strong> 0.0% (0/0) | 
                     <strong>누적 수익률:</strong> <span class="negative">+0.00%</span> | 
@@ -598,40 +515,12 @@
                 </div>
             </div>
             
-            <!-- 누적 수익률 그래프 -->
-            <div class="chart-wrapper">
-                <h3 class="section-title" style="font-size: 1.5rem; margin-bottom: 1rem;">📈 누적 수익률 추이</h3>
-                <div id="cumulativeReturnChart" style="width: 100%; height: 500px;"></div>
-                
-                <div class="chart-stats">
-                    <div class="chart-stat">
-                        <div class="chart-stat-value positive">+0.00%</div>
-                        <div class="chart-stat-label">평균 수익</div>
-                    </div>
-                    <div class="chart-stat">
-                        <div class="chart-stat-value negative">+0.00%</div>
-                        <div class="chart-stat-label">평균 손실</div>
-                    </div>
-                    <div class="chart-stat">
-                        <div class="chart-stat-value positive">+0.00%</div>
-                        <div class="chart-stat-label">최대 수익</div>
-                    </div>
-                    <div class="chart-stat">
-                        <div class="chart-stat-value negative">+0.00%</div>
-                        <div class="chart-stat-label">최대 손실</div>
-                    </div>
-                    <div class="chart-stat">
-                        <div class="chart-stat-value negative">0건</div>
-                        <div class="chart-stat-label">손절 발동</div>
-                    </div>
-                </div>
+            <div style="width: 100%; height: 500px; margin: 2rem 0;">
+                <div id="cumulativeReturnChart" style="width: 100%; height: 100%;"></div>
             </div>
             
             <p style="margin: 1.5rem 0; color: #666;">
-                AI가 제안한 종목들의 24시간 후 실제 결과를 추적합니다. 
-                <span style="color: var(--success-color); font-weight: bold;">초록색</span>은 수익, 
-                <span style="color: var(--danger-color); font-weight: bold;">빨간색</span>은 손실, 
-                <span style="color: #8b0000; font-weight: 900;">진한 빨강</span>은 손절을 의미합니다.
+                패턴 최적화 AI가 제안한 종목들의 24시간 후 실제 결과를 추적합니다.
             </p>
             
             <div style="overflow-x: auto;">
@@ -641,7 +530,7 @@
                             <th>분석날짜</th>
                             <th>종목</th>
                             <th>AI점수</th>
-                            <th>GO확률</th>
+                            <th>추가하락확률</th>
                             <th>24h 결과</th>
                             <th>최고/최저</th>
                             <th>상태</th>
@@ -706,7 +595,6 @@
         
         <script>
             
-            // 데이터가 없을 때
             const layout = {
                 title: '완료된 거래가 없습니다',
                 xaxis: { title: '날짜' },
@@ -717,19 +605,17 @@
         </script>
         
 
-        <!-- 위험 경고 메시지 -->
         <div class="warning-box">
             <div class="warning-title">🚨 CRITICAL INVESTMENT WARNING 🚨</div>
             <div class="warning-text">
                 <strong>이 시스템은 교육 목적으로만 제공됩니다:</strong><br><br>
                 🔴 <strong>숏 포지션은 UNLIMITED LOSS 위험이 있습니다</strong><br>
                 🔴 <strong>-18% 손절 시스템이 작동하지만 슬리피지가 발생할 수 있습니다</strong><br>
-                🔴 <strong>실제 학습된 AI도 절대 100% 정확하지 않습니다</strong><br>
+                🔴 <strong>패턴 최적화 AI도 절대 100% 정확하지 않습니다</strong><br>
                 🔴 <strong>과거 데이터가 미래 수익을 보장하지 않습니다</strong><br>
                 🔴 <strong>암호화폐는 극도로 변동성이 큰 자산입니다</strong><br>
                 🔴 <strong>손실 감당 가능한 매우 소액으로만 시작하세요</strong><br>
-                🔴 <strong>전문가 상담 없이 분석 결과만으로 투자하지 마세요</strong><br>
-                🔴 <strong>시장 조작, 규제 변화, 기술적 오류 등 예측 불가능한 위험이 존재합니다</strong><br><br>
+                🔴 <strong>전문가 상담 없이 분석 결과만으로 투자하지 마세요</strong><br><br>
                 <strong>이 도구는 분석 참고용일 뿐, 투자 조언이 아닙니다.</strong>
             </div>
         </div>
