@@ -21,26 +21,14 @@
             --border-color: #e0e6ed;
             --chart-bg: #1e222d;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
         }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
         .header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -49,20 +37,8 @@
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .header .subtitle {
-            text-align: center;
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-align: center; font-weight: 700; }
+        .header .subtitle { text-align: center; opacity: 0.9; font-size: 1.1rem; }
         .nav-menu {
             background: var(--card-bg);
             border-radius: 15px;
@@ -71,14 +47,7 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
         }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
+        .nav-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
         .nav-link {
             padding: 1.3rem 2.5rem;
             color: white;
@@ -91,25 +60,14 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        .nav-link.dashboard {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-
-        .nav-link.market {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-        }
-
-        .nav-link.pattern {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-        }
-
+        .nav-link.dashboard { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .nav-link.market { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .nav-link.pattern { background: linear-gradient(135deg, #4facfe, #00f2fe); }
         .nav-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             filter: brightness(1.1);
         }
-
         .analysis-summary {
             background: var(--card-bg);
             border-radius: 15px;
@@ -118,14 +76,12 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
         }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
-
         .stat-card {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             padding: 2rem;
@@ -134,24 +90,14 @@
             border: 2px solid var(--border-color);
             transition: transform 0.3s ease;
         }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
+        .stat-card:hover { transform: translateY(-5px); }
         .stat-value {
             font-size: 2.2rem;
             font-weight: bold;
             color: var(--accent-color);
             margin-bottom: 0.5rem;
         }
-
-        .stat-label {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-
+        .stat-label { color: var(--secondary-color); font-size: 1.5rem; font-weight: 500; }
         .chart-section {
             background: var(--card-bg);
             border-radius: 15px;
@@ -160,7 +106,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
         }
-
         .chart-header {
             display: flex;
             justify-content: space-between;
@@ -169,14 +114,7 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-
-        .chart-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
+        .chart-controls { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
         .chart-btn {
             padding: 0.8rem 1.5rem;
             border: none;
@@ -189,18 +127,12 @@
             display: inline-block;
             text-align: center;
         }
-
-        .binance-btn {
-            background: linear-gradient(135deg, #f0b90b, #f8d12f);
-            color: #1e2329;
-        }
-
+        .binance-btn { background: linear-gradient(135deg, #f0b90b, #f8d12f); color: #1e2329; }
         .binance-btn:hover {
             background: linear-gradient(135deg, #fcd535, #f0b90b);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(240, 185, 11, 0.4);
         }
-
         .chart-container {
             height: 800px;
             margin-top: 1.5rem;
@@ -209,7 +141,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             background: var(--chart-bg);
         }
-
         .history-section {
             background: var(--card-bg);
             border-radius: 15px;
@@ -218,7 +149,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
         }
-
         .history-table {
             width: 100%;
             border-collapse: collapse;
@@ -228,14 +158,11 @@
             overflow: hidden;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         }
-
-        .history-table th,
-        .history-table td {
+        .history-table th, .history-table td {
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
         }
-
         .history-table th {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -244,11 +171,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        .history-table tr:hover {
-            background: #f8f9fa;
-        }
-
+        .history-table tr:hover { background: #f8f9fa; }
         .symbol-link {
             color: var(--accent-color);
             text-decoration: none;
@@ -257,13 +180,7 @@
             border-radius: 5px;
             transition: all 0.3s ease;
         }
-
-        .symbol-link:hover {
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-        }
-
+        .symbol-link:hover { background: var(--accent-color); color: white; }
         .risk-badge {
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
@@ -271,25 +188,9 @@
             font-weight: bold;
             text-transform: uppercase;
         }
-
-        .risk-low {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .risk-medium {
-            background: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeaa7;
-        }
-
-        .risk-high {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
+        .risk-low { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .risk-medium { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .risk-high { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
         .tracking-result {
             padding: 0.5rem 1rem;
             border-radius: 8px;
@@ -297,53 +198,31 @@
             font-size: 1.2rem;
             text-align: center;
         }
-
         .tracking-profit {
             background: linear-gradient(135deg, #d4edda, #c3e6cb);
             color: #155724;
             border: 2px solid #28a745;
         }
-
         .tracking-loss {
             background: linear-gradient(135deg, #f8d7da, #f5c6cb);
             color: #721c24;
             border: 2px solid #dc3545;
         }
-
         .tracking-stoploss {
             background: linear-gradient(135deg, #ffe5e5, #ffcccc);
             color: #8b0000;
             border: 2px solid #dc3545;
             font-weight: 900;
         }
-
         .tracking-pending {
             background: linear-gradient(135deg, #fff3cd, #ffeaa7);
             color: #856404;
             border: 2px solid #ffc107;
         }
-
-        .tracking-failed {
-            background: #e9ecef;
-            color: #6c757d;
-            border: 2px solid #adb5bd;
-        }
-
-        .return-stats {
-            font-size: 1.1rem;
-            margin-top: 0.3rem;
-        }
-
-        .best-return {
-            color: var(--success-color);
-            font-weight: bold;
-        }
-
-        .worst-return {
-            color: var(--danger-color);
-            font-weight: bold;
-        }
-
+        .tracking-failed { background: #e9ecef; color: #6c757d; border: 2px solid #adb5bd; }
+        .return-stats { font-size: 1.1rem; margin-top: 0.3rem; }
+        .best-return { color: var(--success-color); font-weight: bold; }
+        .worst-return { color: var(--danger-color); font-weight: bold; }
         .warning-box {
             background: linear-gradient(135deg, #fff3cd, #ffeaa7);
             border: 2px solid #ffc107;
@@ -352,26 +231,14 @@
             margin: 2rem 0;
             box-shadow: 0 5px 20px rgba(255, 193, 7, 0.2);
         }
-
-        .warning-title {
-            color: #856404;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .warning-text {
-            color: #856404;
-            line-height: 1.8;
-        }
-
+        .warning-title { color: #856404; font-weight: bold; margin-bottom: 1rem; font-size: 1.2rem; }
+        .warning-text { color: #856404; line-height: 1.8; }
         .section-title {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--primary-color);
             font-weight: 700;
         }
-
         .tracking-info {
             background: linear-gradient(135deg, #e3f2fd, #bbdefb);
             border: 2px solid #2196f3;
@@ -380,74 +247,23 @@
             margin-top: 1.5rem;
             box-shadow: 0 3px 10px rgba(33, 150, 243, 0.2);
         }
-
         .tracking-info-title {
             color: #1565c0;
             font-weight: bold;
             margin-bottom: 0.5rem;
             font-size: 1.5rem;
         }
-
-        .tracking-info-text {
-            color: #1976d2;
-            line-height: 1.6;
-            font-size: 1.4rem;
-        }
-
-        .positive {
-            color: var(--success-color);
-        }
-
-        .negative {
-            color: var(--danger-color);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .chart-container {
-                height: 600px;
-            }
-
-            .chart-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .chart-controls {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .history-table {
-                font-size: 0.9rem;
-            }
-            
-            .history-table th,
-            .history-table td {
-                padding: 0.5rem;
-            }
-        }
+        .tracking-info-text { color: #1976d2; line-height: 1.6; font-size: 1.4rem; }
+        .positive { color: var(--success-color); }
+        .negative { color: var(--danger-color); }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>🧠 AI 패턴 최적화 숏포지션 분석</h1>
-            <div class="subtitle">양봉-음봉-음봉 / 음봉-음봉-음봉 패턴 전문 • -18% 손절 시스템 • 2025-10-12 12:13:07</div>
+            <div class="subtitle">양봉-음봉-음봉 / 음봉-음봉-음봉 패턴 전문 • -18% 손절 시스템 • 2025-10-12 16:15:12</div>
         </div>
-
         <div class="nav-menu">
             <div class="nav-links">
                 <a href="dashboard.html" class="nav-link dashboard">📊 코인선물 종합 지수</a>
@@ -455,320 +271,222 @@
                 <a href="CandlePatternAnalysis.html" class="nav-link pattern">📈 코인선물 숏포지션 패턴 검출 현황</a>
             </div>
         </div>
-
         
         <div class="analysis-summary">
             <h2 class="section-title">📈 AI 패턴 최적화 최고점수 종목</h2>
-            
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-value">ZEREBROUSDT</div>
+                    <div class="stat-value">HANAUSDT</div>
                     <div class="stat-label">종목명</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">100</div>
+                    <div class="stat-value">97</div>
                     <div class="stat-label">최종 점수</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">100.0%</div>
+                    <div class="stat-value">97.0%</div>
                     <div class="stat-label">신뢰도</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">100.0%</div>
+                    <div class="stat-value">96.7%</div>
                     <div class="stat-label">추가하락 확률</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$0.040500</div>
+                    <div class="stat-value">$0.045230</div>
                     <div class="stat-label">현재가</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value risk-badge risk-high">HIGH</div>
+                    <div class="stat-value risk-badge risk-low">LOW</div>
                     <div class="stat-label">리스크</div>
                 </div>
             </div>
-            
             <div class="tracking-info">
                 <div class="tracking-info-title">🎯 패턴 최적화 AI 특징</div>
                 <div class="tracking-info-text">
                     • 양봉-음봉-음봉 / 음봉-음봉-음봉 패턴에만 특화된 학습<br>
                     • 18개 특성 (기존 15개 + 패턴 강도/가속도/타입)<br>
-                    • 추가 하락에 최적화된 레이블링 (≥3% 강한하락 / 0~3% 약한하락 / 반등)<br>
-                    • 클래스 가중치: 강한하락(2.0) > 약한하락(1.0) > 반등(0.5)<br>
+                    • 추가 하락에 최적화된 레이블링<br>
                     • -18% 손절 시스템 적용
                 </div>
             </div>
         </div>
         
         
-        <div class="chart-section" id="chartSection">
+        
+        <div class="chart-section">
             <div class="chart-header">
-                <h2 class="section-title">📈 ZEREBROUSDT 실시간 차트 (4시간봉)</h2>
+                <h2 class="section-title">📈 HANAUSDT 실시간 차트 (4시간봉)</h2>
                 <div class="chart-controls">
-                    <a href="https://www.binance.com/en/futures/ZEREBRO_USDT" target="_blank" class="chart-btn binance-btn">
-                        🏦 바이낸스에서 보기
-                    </a>
+                    <a href="https://www.binance.com/en/futures/HANA_USDT" target="_blank" class="chart-btn binance-btn">🏦 바이낸스에서 보기</a>
                 </div>
             </div>
-            <div class="chart-container" id="chartContainer">
+            <div class="chart-container">
                 <div id="tradingview_chart" style="height: 800px; width: 100%;"></div>
             </div>
         </div>
-        
         <script>
             new TradingView.widget({
-                "width": "100%",
-                "height": 800,
-                "symbol": "BINANCE:ZEREBROUSDT",
-                "interval": "240",
-                "timezone": "Asia/Seoul",
-                "theme": "dark",
-                "style": "1",
-                "locale": "kr",
-                "toolbar_bg": "#000000",
-                "enable_publishing": false,
-                "hide_top_toolbar": false,
-                "hide_legend": false,
-                "save_image": false,
+                "width": "100%", "height": 800, "symbol": "BINANCE:HANAUSDT",
+                "interval": "240", "timezone": "Asia/Seoul", "theme": "dark",
+                "style": "1", "locale": "kr", "toolbar_bg": "#000000",
+                "enable_publishing": false, "hide_top_toolbar": false,
+                "hide_legend": false, "save_image": false,
                 "container_id": "tradingview_chart",
-                "studies": [
-                    "RSI@tv-basicstudies",
-                    "MASimple@tv-basicstudies",
-                    "Volume@tv-basicstudies"
-                ]
+                "studies": ["RSI@tv-basicstudies", "MASimple@tv-basicstudies", "Volume@tv-basicstudies"]
             });
         </script>
         
         
         <div class="history-section">
             <h2 class="section-title">📋 패턴 최적화 AI 24시간 성과 추적</h2>
-            
             <div class="tracking-info">
                 <div class="tracking-info-title">📊 추적 성과 요약</div>
                 <div class="tracking-info-text">
-                    <strong>승률:</strong> 100.0% (4/4) | 
-                    <strong>누적 수익률:</strong> <span class="positive">+58.61%</span> | 
-                    <strong>총 추적 건수:</strong> 10건 | 
+                    <strong>승률:</strong> 80.0% (4/5) | 
+                    <strong>누적 수익률:</strong> <span class="positive">+54.61%</span> | 
+                    <strong>총 추적 건수:</strong> 11건 | 
                     <strong>손절 발동:</strong> <span class="negative">0건 (0.0%)</span>
                 </div>
             </div>
-            
             <div style="width: 100%; height: 500px; margin: 2rem 0;">
                 <div id="cumulativeReturnChart" style="width: 100%; height: 100%;"></div>
             </div>
-            
-            <p style="margin: 1.5rem 0; color: #666;">
-                패턴 최적화 AI가 제안한 종목들의 24시간 후 실제 결과를 추적합니다.
-            </p>
-            
             <div style="overflow-x: auto;">
                 <table class="history-table">
                     <thead>
                         <tr>
-                            <th>분석날짜</th>
-                            <th>종목</th>
-                            <th>AI점수</th>
-                            <th>추가하락확률</th>
-                            <th>24h 결과</th>
-                            <th>최고/최저</th>
-                            <th>상태</th>
+                            <th>분석날짜</th><th>종목</th><th>AI점수</th><th>추가하락확률</th>
+                            <th>24h 결과</th><th>최고/최저</th><th>상태</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-12 (일) 12:13</td>
+                    <td style="font-weight: bold;">2025-10-12 (일) 16:15</td>
+                    <td><a href="https://www.binance.com/en/futures/HANA_USDT" target="_blank" class="symbol-link">HANAUSDT</a></td>
+                    <td style="font-weight: bold;">97</td>
+                    <td style="font-weight: bold;">96.7%</td>
+                    <td><div class="tracking-result tracking-pending">대기중</div></td>
+                    <td><div class="return-stats">-</div></td>
+                    <td><span class="risk-badge risk-medium">대기</span></td>
+                </tr>
+            
+                <tr style="font-size: 1.2rem;">
+                    <td style="font-weight: bold;">2025-10-12 (일) 12:13</td>
                     <td><a href="https://www.binance.com/en/futures/ZEREBRO_USDT" target="_blank" class="symbol-link">ZEREBROUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">100</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">100.0%</td>
+                    <td style="font-weight: bold;">100</td>
+                    <td style="font-weight: bold;">100.0%</td>
                     <td><div class="tracking-result tracking-pending">대기중</div></td>
                     <td><div class="return-stats">-</div></td>
                     <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-12 (일) 08:14</td>
+                    <td style="font-weight: bold;">2025-10-12 (일) 08:14</td>
                     <td><a href="https://www.binance.com/en/futures/BANK_USDT" target="_blank" class="symbol-link">BANKUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">88</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">88.3%</td>
+                    <td style="font-weight: bold;">88</td>
+                    <td style="font-weight: bold;">88.3%</td>
                     <td><div class="tracking-result tracking-pending">대기중</div></td>
                     <td><div class="return-stats">-</div></td>
                     <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-12 (일) 04:13</td>
+                    <td style="font-weight: bold;">2025-10-12 (일) 04:13</td>
                     <td><a href="https://www.binance.com/en/futures/H_USDT" target="_blank" class="symbol-link">HUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">81</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">80.5%</td>
+                    <td style="font-weight: bold;">81</td>
+                    <td style="font-weight: bold;">80.5%</td>
                     <td><div class="tracking-result tracking-pending">대기중</div></td>
                     <td><div class="return-stats">-</div></td>
                     <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-12 (일) 00:12</td>
+                    <td style="font-weight: bold;">2025-10-12 (일) 00:12</td>
                     <td><a href="https://www.binance.com/en/futures/KGEN_USDT" target="_blank" class="symbol-link">KGENUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">100</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">100.0%</td>
+                    <td style="font-weight: bold;">100</td>
+                    <td style="font-weight: bold;">100.0%</td>
                     <td><div class="tracking-result tracking-pending">대기중</div></td>
                     <td><div class="return-stats">-</div></td>
                     <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-11 (토) 20:12</td>
+                    <td style="font-weight: bold;">2025-10-11 (토) 20:12</td>
                     <td><a href="https://www.binance.com/en/futures/BTCDOM_USDT" target="_blank" class="symbol-link">BTCDOMUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">57</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">56.9%</td>
+                    <td style="font-weight: bold;">57</td>
+                    <td style="font-weight: bold;">56.9%</td>
                     <td><div class="tracking-result tracking-pending">대기중</div></td>
                     <td><div class="return-stats">-</div></td>
                     <td><span class="risk-badge risk-medium">대기</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-11 (토) 16:12</td>
+                    <td style="font-weight: bold;">2025-10-11 (토) 16:12</td>
                     <td><a href="https://www.binance.com/en/futures/TRUTH_USDT" target="_blank" class="symbol-link">TRUTHUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">95</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">95.1%</td>
-                    <td><div class="tracking-result tracking-pending">대기중</div></td>
-                    <td><div class="return-stats">-</div></td>
-                    <td><span class="risk-badge risk-medium">대기</span></td>
+                    <td style="font-weight: bold;">95</td>
+                    <td style="font-weight: bold;">95.1%</td>
+                    <td><div class="tracking-result tracking-loss">-4.00%</div></td>
+                    <td><div class="return-stats"><span class="best-return">최고: +2.63%</span><br><span class="worst-return">최저: -14.39%</span></div></td>
+                    <td><span class="risk-badge risk-high">완료</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-11 (토) 12:12</td>
+                    <td style="font-weight: bold;">2025-10-11 (토) 12:12</td>
                     <td><a href="https://www.binance.com/en/futures/BLESS_USDT" target="_blank" class="symbol-link">BLESSUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">98</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">98.0%</td>
+                    <td style="font-weight: bold;">98</td>
+                    <td style="font-weight: bold;">98.0%</td>
                     <td><div class="tracking-result tracking-profit">+6.32%</div></td>
-                    <td><div class="return-stats">
-                        <span class="best-return">최고: +17.37%</span><br>
-                        <span class="worst-return">최저: -0.44%</span>
-                    </div></td>
+                    <td><div class="return-stats"><span class="best-return">최고: +17.37%</span><br><span class="worst-return">최저: -0.44%</span></div></td>
                     <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-11 (토) 08:13</td>
+                    <td style="font-weight: bold;">2025-10-11 (토) 08:13</td>
                     <td><a href="https://www.binance.com/en/futures/IN_USDT" target="_blank" class="symbol-link">INUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">100</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">99.9%</td>
+                    <td style="font-weight: bold;">100</td>
+                    <td style="font-weight: bold;">99.9%</td>
                     <td><div class="tracking-result tracking-profit">+11.78%</div></td>
-                    <td><div class="return-stats">
-                        <span class="best-return">최고: +18.10%</span><br>
-                        <span class="worst-return">최저: -16.56%</span>
-                    </div></td>
+                    <td><div class="return-stats"><span class="best-return">최고: +18.10%</span><br><span class="worst-return">최저: -16.56%</span></div></td>
                     <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-11 (토) 04:13</td>
+                    <td style="font-weight: bold;">2025-10-11 (토) 04:13</td>
                     <td><a href="https://www.binance.com/en/futures/Q_USDT" target="_blank" class="symbol-link">QUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">75</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">75.5%</td>
+                    <td style="font-weight: bold;">75</td>
+                    <td style="font-weight: bold;">75.5%</td>
                     <td><div class="tracking-result tracking-profit">+24.62%</div></td>
-                    <td><div class="return-stats">
-                        <span class="best-return">최고: +36.83%</span><br>
-                        <span class="worst-return">최저: -1.17%</span>
-                    </div></td>
+                    <td><div class="return-stats"><span class="best-return">최고: +36.83%</span><br><span class="worst-return">최저: -1.17%</span></div></td>
                     <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
             
                 <tr style="font-size: 1.2rem;">
-                    <td style="font-weight: bold; color: var(--accent-color);">2025-10-11 (토) 00:56</td>
+                    <td style="font-weight: bold;">2025-10-11 (토) 00:56</td>
                     <td><a href="https://www.binance.com/en/futures/SQD_USDT" target="_blank" class="symbol-link">SQDUSDT</a></td>
-                    <td style="font-weight: bold; color: var(--accent-color);">100</td>
-                    <td style="font-weight: bold; color: var(--accent-color);">100.0%</td>
+                    <td style="font-weight: bold;">100</td>
+                    <td style="font-weight: bold;">100.0%</td>
                     <td><div class="tracking-result tracking-profit">+15.88%</div></td>
-                    <td><div class="return-stats">
-                        <span class="best-return">최고: +24.90%</span><br>
-                        <span class="worst-return">최저: -1.22%</span>
-                    </div></td>
+                    <td><div class="return-stats"><span class="best-return">최고: +24.90%</span><br><span class="worst-return">최저: -1.22%</span></div></td>
                     <td><span class="risk-badge risk-low">완료</span></td>
                 </tr>
-            
-                    </tbody>
+            </tbody>
                 </table>
             </div>
         </div>
-        
         <script>
-            
-        const dates = ["2025-10-11"];
-        const opens = [0];
-        const highs = [58.61];
-        const lows = [0];
-        const closes = [58.61];
-        
-        const candlestick = {
-            type: 'candlestick',
-            x: dates,
-            open: opens,
-            high: highs,
-            low: lows,
-            close: closes,
-            increasing: {
-                line: { color: '#26a69a', width: 2 },
-                fillcolor: '#26a69a'
-            },
-            decreasing: {
-                line: { color: '#ef5350', width: 2 },
-                fillcolor: '#ef5350'
-            },
-            name: '일별 누적 수익률'
-        };
-        
-        const line = {
-            type: 'scatter',
-            mode: 'lines+markers',
-            x: dates,
-            y: closes,
-            line: {
-                color: 'rgba(102, 126, 234, 0.6)',
-                width: 2,
-                dash: 'dot'
-            },
-            marker: {
-                size: 6,
-                color: 'rgba(102, 126, 234, 0.8)'
-            },
-            name: '누적 라인'
-        };
-        
-        const data = [candlestick, line];
-        
+        const data = [{
+            type: 'candlestick', x: ["2025-10-11"],
+            open: [0], high: [58.61], low: [0], close: [54.61],
+            increasing: {line: {color: '#26a69a'}},
+            decreasing: {line: {color: '#ef5350'}}
+        }];
         const layout = {
-            title: {
-                text: '패턴 최적화 AI 누적 수익률 차트',
-                font: { size: 18, weight: 'bold' }
-            },
-            xaxis: {
-                title: '날짜',
-                rangeslider: { visible: false },
-                type: 'date'
-            },
-            yaxis: {
-                title: '누적 수익률 (%)',
-                ticksuffix: '%',
-                zeroline: true,
-                zerolinecolor: '#999',
-                zerolinewidth: 2
-            },
-            showlegend: true,
-            height: 500
+            title: '패턴 최적화 AI 누적 수익률', xaxis: {title: '날짜'},
+            yaxis: {title: '누적 수익률 (%)', ticksuffix: '%'}, height: 500
         };
-        
-        const config = {
-            responsive: true,
-            displayModeBar: true,
-            displaylogo: false
-        };
-        
-        Plotly.newPlot('cumulativeReturnChart', data, layout, config);
-        
+        Plotly.newPlot('cumulativeReturnChart', data, layout);
         </script>
         
-
         <div class="warning-box">
             <div class="warning-title">🚨 CRITICAL INVESTMENT WARNING 🚨</div>
             <div class="warning-text">
@@ -777,10 +495,6 @@
                 🔴 <strong>-18% 손절 시스템이 작동하지만 슬리피지가 발생할 수 있습니다</strong><br>
                 🔴 <strong>패턴 최적화 AI도 절대 100% 정확하지 않습니다</strong><br>
                 🔴 <strong>과거 데이터가 미래 수익을 보장하지 않습니다</strong><br>
-                🔴 <strong>암호화폐는 극도로 변동성이 큰 자산입니다</strong><br>
-                🔴 <strong>손실 감당 가능한 매우 소액으로만 시작하세요</strong><br>
-                🔴 <strong>전문가 상담 없이 분석 결과만으로 투자하지 마세요</strong><br><br>
-                <strong>이 도구는 분석 참고용일 뿐, 투자 조언이 아닙니다.</strong>
             </div>
         </div>
     </div>
