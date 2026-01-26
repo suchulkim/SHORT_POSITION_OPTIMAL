@@ -37,69 +37,6 @@
             color: #666;
             font-size: 1.1rem;
         }
-        .market-status-box {
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 2rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            animation: fadeIn 0.5s ease-in;
-        }
-        .market-status-allowed {
-            background: linear-gradient(135deg, #d4edda, #c3e6cb);
-            border: 3px solid #28a745;
-        }
-        .market-status-blocked {
-            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
-            border: 3px solid #dc3545;
-        }
-        .market-status-icon {
-            font-size: 4rem;
-            line-height: 1;
-        }
-        .market-status-content {
-            flex: 1;
-        }
-        .market-status-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .market-status-allowed .market-status-title {
-            color: #155724;
-        }
-        .market-status-blocked .market-status-title {
-            color: #721c24;
-        }
-        .market-status-reason {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        .market-status-allowed .market-status-reason {
-            color: #155724;
-        }
-        .market-status-blocked .market-status-reason {
-            color: #721c24;
-        }
-        .market-status-time {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-        .market-status-note {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 2px dashed #721c24;
-            line-height: 1.6;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
         
         .nav-menu {
             background: white;
@@ -151,9 +88,6 @@
             color: #764ba2;
             text-decoration: underline;
             transform: scale(1.05);
-        }
-        .symbol-link:visited {
-            color: #667eea;
         }
 
         .stats-grid {
@@ -231,9 +165,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🤖 자동매매 결과</h1>
-            <div class="subtitle">패턴 최적화 AI 코인선물 숏포지션 자동매매 시스템</div>
-            <div class="subtitle">생성 시간: 2025-12-18 01:06:43</div>
+            <h1>🤖 자동매매 결과 (오전 04/08시간대 진입)</h1>
+            <div class="subtitle">AI 코인선물 숏포지션 자동매매 시스템</div>
+            <div class="subtitle">생성 시간: 2026-01-27 04:49:37</div>
         </div>
         
         <div class="nav-menu">
@@ -245,48 +179,37 @@
             </div>
         </div>
         
-        
-            <div class="market-status-box market-status-allowed">
-                <div class="market-status-icon">✅</div>
-                <div class="market-status-content">
-                    <div class="market-status-title">시장 상태: 신규 진입 가능</div>
-                    <div class="market-status-reason">전일 캔들 데이터 부족 (진입 허용)</div>
-                    <div class="market-status-time">최종 평가: 2025-12-18 01:06:43</div>
-                </div>
-            </div>
-            
-        
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value">26</div>
+                <div class="stat-value">27</div>
                 <div class="stat-label">총 거래 횟수</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value positive">10</div>
+                <div class="stat-value positive">11</div>
                 <div class="stat-label">수익 거래</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">38.5%</div>
+                <div class="stat-value">40.7%</div>
                 <div class="stat-label">승률</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value negative">-52.00%</div>
+                <div class="stat-value negative">-48.82%</div>
                 <div class="stat-label">누적 수익률</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value negative">-2.00%</div>
+                <div class="stat-value negative">-1.81%</div>
                 <div class="stat-label">평균 수익률</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value negative">$-20.78</div>
+                <div class="stat-value negative">$-19.19</div>
                 <div class="stat-label">누적 PNL</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">$404.73</div>
+                <div class="stat-value">$309.55</div>
                 <div class="stat-label">총 잔액</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">$355.92</div>
+                <div class="stat-value">$269.57</div>
                 <div class="stat-label">사용 가능 잔액</div>
             </div>
         </div>
@@ -315,15 +238,28 @@
                 <tbody>
                     
                 <tr>
-                    <td>2025-12-18 (목) 00:56</td>
-                    <td><a href="https://www.binance.com/en/futures/EPICUSDT" class="symbol-link" target="_blank">EPICUSDT</a></td>
-                    <td>$0.602100</td>
+                    <td>2026-01-27 (화) 04:49</td>
+                    <td><a href="https://www.binance.com/en/futures/DODOXUSDT" class="symbol-link" target="_blank">DODOXUSDT</a></td>
+                    <td>$0.018825</td>
                     <td>-</td>
                     <td class="">-</td>
                     <td class="">-</td>
-                    <td>$50.0</td>
+                    <td>$40.0</td>
                     <td>1x</td>
                     <td><span class="status-badge status-open">대기중</span></td>
+                </tr>
+            
+
+                <tr>
+                    <td>2025-12-18 (목) 00:56</td>
+                    <td><a href="https://www.binance.com/en/futures/EPICUSDT" class="symbol-link" target="_blank">EPICUSDT</a></td>
+                    <td>$0.602100</td>
+                    <td>$0.582924</td>
+                    <td class="pnl-positive">+3.18%</td>
+                    <td class="pnl-positive">$+1.59</td>
+                    <td>$50.0</td>
+                    <td>1x</td>
+                    <td><span class="status-badge status-closed">완료</span></td>
                 </tr>
             
 
@@ -673,11 +609,10 @@
         
         const dates = ["2025-12-12", "2025-12-13", "2025-12-14", "2025-12-15", "2025-12-16", "2025-12-18"];
         const opens = [0, -1.48, -24.84, -26.54, -16.6, -52.2];
-        const highs = [0, -1.48, -24.84, -6.59, -16.6, -52.0];
+        const highs = [0, -1.48, -24.84, -6.59, -16.6, -48.82];
         const lows = [-1.48, -24.84, -34.55, -26.54, -60.09, -52.2];
-        const closes = [-1.48, -24.84, -26.54, -16.6, -52.2, -52.0];
+        const closes = [-1.48, -24.84, -26.54, -16.6, -52.2, -48.82];
         
-        // 캔들스틱 차트
         const candlestick = {
             type: 'candlestick',
             x: dates,
@@ -696,7 +631,6 @@
             name: '일별 누적 수익률'
         };
         
-        // 누적 라인 (점선)
         const line = {
             type: 'scatter',
             mode: 'lines+markers',
