@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>긴 위 꼬리 음봉 감지 현황 (숏 시그널)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f7fa;
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0 0 12px 0;
+            font-size: 1.8em;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .header p {
+            margin: 8px 0;
+            opacity: 0.95;
+            font-size: 1em;
+        }
+        
+        .config-badge {
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+
+        .nav-section {
+            background: white;
+            padding: 20px 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-section .btn {
+            margin: 8px 5px;
+            padding: 16px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-height: 50px;
+        }
+        
+        .nav-section .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-container {
+            padding: 20px 15px;
+            background-color: #fff5f5;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #f44336;
+        }
+        
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #f44336;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+        
+        .analysis-info {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .analysis-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .analysis-info ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        
+        .analysis-info li {
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #f44336;
+            line-height: 1.4;
+        }
+        
+        .table-container {
+            padding: 20px 15px;
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 25px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #f44336 0%, #e91e63 100%);
+            color: white;
+            padding: 16px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.5em;
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 14px 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 1.3em;
+        }
+        
+        tr:hover {
+            background-color: #fff5f5;
+        }
+        
+        .symbol-cell {
+            font-weight: bold;
+            color: #f44336;
+        }
+        
+        .symbol-link {
+            color: #f44336;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 8px 10px;
+            min-height: 44px;
+            line-height: 1.4;
+        }
+        
+        .symbol-link:hover {
+            color: #c62828;
+            text-decoration: underline;
+            background-color: rgba(244, 67, 54, 0.1);
+            border-radius: 6px;
+        }
+        
+        .ratio-high {
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        .ratio-medium {
+            color: #f44336;
+            font-weight: bold;
+        }
+        
+        .ratio-low {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 25px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+        
+        .note {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #c62828;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .note p {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+        
+        @media (min-width: 769px) {
+            body {
+                padding: 20px;
+                font-size: 16px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            th, td {
+                font-size: 0.85em;
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📉 긴 위 꼬리 음봉 감지 현황 (숏 시그널)</h1>
+            <p>분석 시간: 2026-01-27 18:33:26</p>
+            <p>USD/KRW 환율: 1444.38원</p>
+            <div>
+                <span class="config-badge">비율: 1배 이상</span>
+                <span class="config-badge">몸통: 0.5% 이상</span>
+                <span class="config-badge">위꼬리: 1% 이상</span>
+                <span class="config-badge">거래대금: $50,000 이상</span>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <a href="dashboard.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-chart-line"></i> 코인선물 종합지수
+                </a>
+                <a href="BinanceMarketOverview.html" class="btn btn-info btn-lg">
+                    <i class="fas fa-globe"></i> 코인선물 시장 현황
+                </a>
+                <a href="CandlePatternAnalysis.html" class="btn btn-warning btn-lg">
+                    <i class="fas fa-chart-bar"></i> 숏포지션 패턴 검출
+                </a>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">긴 위 꼬리 음봉<br>발견 종목</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7.32배</div>
+                    <div class="stat-label">최대 비율<br>(LINEAUSDT)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2.99배</div>
+                    <div class="stat-label">평균 비율</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">비율 3배 이상<br>종목 수</div>
+                </div>
+            </div>
+            
+            <div class="analysis-info">
+                <h3>📋 분석 조건</h3>
+                <ul>
+                    <li><strong>분석 대상:</strong> 최신 4시간봉 (현재 진행중)</li>
+                    <li><strong>캔들 타입:</strong> 음봉 (종가 &lt; 시가)</li>
+                    <li><strong>위꼬리/몸통 비율:</strong> 1배 이상</li>
+                    <li><strong>최소 몸통 크기:</strong> 0.5% 이상</li>
+                    <li><strong>최소 위꼬리 크기:</strong> 1% 이상</li>
+                    <li><strong>최소 거래대금:</strong> $50,000 이상</li>
+                    <li><strong>의미:</strong> 상승 시도했으나 강한 매도 압력으로 하락</li>
+                    <li><strong>시그널:</strong> 고점 저항 + 하락 가능성 (숏 포지션 진입 시그널)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h2 class="section-title">📉 긴 위 꼬리 음봉 종목 (12개) - 비율 높은 순</h2>
+            <div class="note">
+                <div class="note-title">💡 투자 포인트</div>
+                <p><strong>긴 위 꼬리</strong>는 상승 시도 후 <strong>강한 매도 압력</strong>으로 하락한 것을 의미합니다.</p>
+                <p>비율이 높을수록 <strong>매도 압력이 강하며</strong>, 고점 저항을 받고 하락할 가능성이 높습니다.</p>
+                <p><strong>숏 포지션 진입</strong>을 고려할 수 있는 시그널입니다.</p>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>심볼</th>
+                            <th>현재가</th>
+                            <th>몸통%</th>
+                            <th>위꼬리%</th>
+                            <th>비율(배)</th>
+                            <th>거래대금</th>
+                            <th>캔들시간</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/LINEAUSDT" target="_blank" class="symbol-link">LINEAUSDT</a></td>
+                            <td>0.006430</td>
+                            <td>0.73%</td>
+                            <td>5.31%</td>
+                            <td class="ratio-high">7.32배</td>
+                            <td>₩80,284,013,317</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/FHEUSDT" target="_blank" class="symbol-link">FHEUSDT</a></td>
+                            <td>0.130510</td>
+                            <td>0.56%</td>
+                            <td>3.57%</td>
+                            <td class="ratio-high">6.34배</td>
+                            <td>₩64,872,603,718</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/AXLUSDT" target="_blank" class="symbol-link">AXLUSDT</a></td>
+                            <td>0.099800</td>
+                            <td>0.89%</td>
+                            <td>4.87%</td>
+                            <td class="ratio-high">5.44배</td>
+                            <td>₩193,410,893,969</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/DASHUSDT" target="_blank" class="symbol-link">DASHUSDT</a></td>
+                            <td>62.470000</td>
+                            <td>1.09%</td>
+                            <td>3.96%</td>
+                            <td class="ratio-medium">3.62배</td>
+                            <td>₩243,842,419,070</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/FLOCKUSDT" target="_blank" class="symbol-link">FLOCKUSDT</a></td>
+                            <td>0.081200</td>
+                            <td>1.10%</td>
+                            <td>2.44%</td>
+                            <td class="ratio-low">2.22배</td>
+                            <td>₩7,208,176,047</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/1000SATSUSDT" target="_blank" class="symbol-link">1000SATSUSDT</a></td>
+                            <td>0.000015</td>
+                            <td>0.65%</td>
+                            <td>1.30%</td>
+                            <td class="ratio-low">2.00배</td>
+                            <td>₩3,964,378,206</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BRUSDT" target="_blank" class="symbol-link">BRUSDT</a></td>
+                            <td>0.064410</td>
+                            <td>1.00%</td>
+                            <td>1.95%</td>
+                            <td class="ratio-low">1.95배</td>
+                            <td>₩3,849,942,919</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ESPORTSUSDT" target="_blank" class="symbol-link">ESPORTSUSDT</a></td>
+                            <td>0.514030</td>
+                            <td>0.80%</td>
+                            <td>1.22%</td>
+                            <td class="ratio-low">1.52배</td>
+                            <td>₩4,296,515,025</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/ZKPUSDT" target="_blank" class="symbol-link">ZKPUSDT</a></td>
+                            <td>0.112910</td>
+                            <td>1.02%</td>
+                            <td>1.52%</td>
+                            <td class="ratio-low">1.49배</td>
+                            <td>₩33,071,647,642</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/XANUSDT" target="_blank" class="symbol-link">XANUSDT</a></td>
+                            <td>0.011440</td>
+                            <td>0.87%</td>
+                            <td>1.21%</td>
+                            <td class="ratio-low">1.40배</td>
+                            <td>₩3,441,569,374</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/BTRUSDT" target="_blank" class="symbol-link">BTRUSDT</a></td>
+                            <td>0.142380</td>
+                            <td>1.60%</td>
+                            <td>2.11%</td>
+                            <td class="ratio-low">1.32배</td>
+                            <td>₩719,693,990,559</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td class="symbol-cell"><a href="https://www.binance.com/en/futures/AUCTIONUSDT" target="_blank" class="symbol-link">AUCTIONUSDT</a></td>
+                            <td>6.094000</td>
+                            <td>1.36%</td>
+                            <td>1.72%</td>
+                            <td class="ratio-low">1.26배</td>
+                            <td>₩235,774,600,757</td>
+                            <td>2026-01-27 17:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="note">
+                <div class="note-title">⚠️ 투자 유의사항</div>
+                <p>긴 위 꼬리 음봉은 <strong>매도 압력 강화</strong>를 시사하지만, 절대적인 하락 신호는 아닙니다.</p>
+                <p>추가적인 기술적 분석, 거래량 분석, 추세 확인이 필요합니다.</p>
+                <p>특히 <strong>상승 추세 중</strong> 나타난 긴 위 꼬리는 단기 조정 후 재상승 가능성도 있습니다.</p>
+                <p><strong>손절 라인 설정</strong>은 필수입니다.</p>
+            </div>
+            <p>생성 시간: 2026-01-27 18:33:26<br>분석 대상: 바이낸스 USDT 선물<br>데이터: 최신 4시간봉</p>
+            <p>발견 종목: 12개</p>
+            <p>분석 조건: 위꼬리/몸통 ≥ 1배 | 몸통 ≥ 0.5% | 위꼬리 ≥ 1% | 거래대금 ≥ $50,000</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
